@@ -6,30 +6,6 @@ import { LiaChevronCircleUpSolid } from "react-icons/lia";
 function page() {
   const [openSelect, setOPenSelect] = useState(false);
   const [isAllChecked, setIsAllChecked] = useState(false);
-  const dummyData = [
-    { id: 1, name: "Ali haseni" },
-    { id: 2, name: "Ali haseni" },
-    { id: 3, name: "Ali haseni" },
-    { id: 4, name: "Ali haseni" },
-    { id: 5, name: "Ali haseni" },
-    { id: 6, name: "Ali haseni" },
-    { id: 7, name: "Ali haseni" },
-    { id: 18, name: "Ali haseni" },
-    { id: 19, name: "Ali haseni" },
-    { id: 12, name: "Ali haseni" },
-    { id: 113, name: "Ali haseni" },
-    { id: 115, name: "Ali haseni" },
-    { id: 16, name: "Ali haseni" },
-    { id: 17, name: "Ali haseni" },
-    { id: 171, name: "Ali haseni" },
-    { id: 172, name: "Ali haseni" },
-    { id: 127, name: "Ali haseni" },
-    { id: 137, name: "Ali haseni" },
-    { id: 174, name: "Ali haseni" },
-    { id: 157, name: "Ali haseni" },
-    { id: 167, name: "Ali haseni" },
-    { id: 177, name: "Ali haseni" },
-  ];
 
   return (
     <>
