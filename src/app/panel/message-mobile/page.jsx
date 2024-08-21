@@ -10,7 +10,7 @@ function page() {
   return (
     <>
       <div className="cont min-h-[600px]">
-        <div className="create-message block flex-1 rounded-[31px] z-50  p-5 flex flex-col gap-[20px] shadow-md bg-customRed mt-[100px] m-2 min-h-[550px]">
+        <div className="create-message flex-1 rounded-[31px] z-50  p-5 flex flex-col gap-[20px] shadow-md bg-customRed mt-[100px] m-2 min-h-[550px]">
           <p className="text-center font-bold text-[#ffcb00] text-[24px] ">
             Create message
           </p>
@@ -22,7 +22,7 @@ function page() {
           </div>
           <div className="choose-how-can-see mt-2">
             <p className="  text-[17px] text-[#ffcb00]">
-              To send it to everyone choose{" "}
+              To send it to everyone choose
               <span className="font-bold">All</span>.
             </p>
             <div

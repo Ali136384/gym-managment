@@ -1,15 +1,12 @@
 "use server";
-
 import { readFile, writeFile } from "fs/promises";
-import { NextResponse } from "next/server";
 import path from "path";
 import client from "./client";
 import { cookies } from "next/headers";
 import { ProductCategory } from "@prisma/client";
-import { connect } from "http2";
 
-const gymHomeBackImage = 'gymHomeBackImage';
-const adsBackground = 'adsBackground';
+const gymHomeBackImage = "gymHomeBackImage";
+const adsBackground = "adsBackground";
 
 async function importJSON(): Promise<Dashboard> {
   const content = await readFile(path.join(process.cwd(), "dashboard.json"));
@@ -36,7 +33,7 @@ type Plan = {
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null | undefined;
-}
+};
 
 type Product = {
   id: number;
@@ -49,7 +46,7 @@ type Product = {
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null | undefined;
-}
+};
 
 type Contacts = {
   email: string;
@@ -70,14 +67,26 @@ type Dashboard = {
 };
 
 export async function getHomeGeneralInfo(): Promise<
-  { title: string; sentence: string; secondSentence: string, plansDescription: string } | "error" | "unauthorized"
+  | {
+      title: string;
+      sentence: string;
+      secondSentence: string;
+      plansDescription: string;
+    }
+  | "error"
+  | "unauthorized"
 > {
   try {
     await client.$connect();
 
     const d = await importJSON();
 
-    return { title: d.gymTitle, sentence: d.starterSentence, secondSentence: d.secondStarterSentence, plansDescription: d.plansParagraph  };
+    return {
+      title: d.gymTitle,
+      sentence: d.starterSentence,
+      secondSentence: d.secondStarterSentence,
+      plansDescription: d.plansParagraph,
+    };
   } catch (e) {
     console.log("failed to fetch dashboard general info: " + e);
     return "error";
@@ -110,7 +119,7 @@ export async function updateHomeGeneralInfo({
   title: string | null;
   starter: string | null;
   secondStarter: string | null;
-  description: string | null
+  description: string | null;
 }): Promise<boolean | "error" | "unauthorized"> {
   try {
     await client.$connect();
@@ -138,7 +147,8 @@ export async function updateHomeGeneralInfo({
 
     dashboard.gymTitle = title ?? dashboard.gymTitle;
     dashboard.starterSentence = starter ?? dashboard.starterSentence;
-    dashboard.secondStarterSentence = secondStarter ?? dashboard.secondStarterSentence;
+    dashboard.secondStarterSentence =
+      secondStarter ?? dashboard.secondStarterSentence;
     dashboard.plansParagraph = description ?? dashboard.plansParagraph;
 
     await exportJSON(dashboard);
@@ -151,58 +161,61 @@ export async function updateHomeGeneralInfo({
   return true;
 }
 
-export async function getPlanParagraph(): Promise<string | 'error'> {
-    try {
-        const p = await importJSON();
+export async function getPlanParagraph(): Promise<string | "error"> {
+  try {
+    const p = await importJSON();
 
-        return p.plansParagraph;
-    } catch (e) {
-        console.log(e);
-        return 'error';
-    }
+    return p.plansParagraph;
+  } catch (e) {
+    console.log(e);
+    return "error";
+  }
 }
 
-export async function updatePlanParagraph(paragraph: string): Promise<'success' | 'unauthorized' | 'error'> {
-    try {
-        await client.$connect();
+export async function updatePlanParagraph(
+  paragraph: string
+): Promise<"success" | "unauthorized" | "error"> {
+  try {
+    await client.$connect();
 
-        const sc = cookies().get("session");
-        if (!sc) {
-            console.log("unauthorized");
-            return "unauthorized";
-        }
-        if (!(await client.user.count({ where: { session: sc.value } }))) {
-            console.log("unauthorized");
-            return "unauthorized";
-        }
-
-        const g = await importJSON();
-
-        g.plansParagraph = paragraph;
-
-        await exportJSON(g);
-        return 'success';
-    } catch (e) {
-        console.log(e);
-        return 'error';
-    } finally {
-        await client.$disconnect();
+    const sc = cookies().get("session");
+    if (!sc) {
+      console.log("unauthorized");
+      return "unauthorized";
     }
+    if (!(await client.user.count({ where: { session: sc.value } }))) {
+      console.log("unauthorized");
+      return "unauthorized";
+    }
+
+    const g = await importJSON();
+
+    g.plansParagraph = paragraph;
+
+    await exportJSON(g);
+    return "success";
+  } catch (e) {
+    console.log(e);
+    return "error";
+  } finally {
+    await client.$disconnect();
+  }
 }
 
-export async function getHomePlans(): Promise<Plan[]| "error"> {
+export async function getHomePlans(): Promise<Plan[] | "error"> {
   try {
     await client.$connect();
 
     const plans = await client.plan.findMany({ include: { features: true } });
-    return plans.map(p => {
-      return {...p,
-        features: p.features.map( f => f.name ),
+    return plans.map((p) => {
+      return {
+        ...p,
+        features: p.features.map((f) => f.name),
         price: p.price.toNumber(),
         createdAt: p.createdAt.toDateString(),
         updatedAt: p.createdAt.toDateString(),
-        deletedAt: p.createdAt?.toDateString()
-      }
+        deletedAt: p.createdAt?.toDateString(),
+      };
     });
   } catch (e) {
     console.log("failed to fetch plans: " + e);
@@ -212,20 +225,26 @@ export async function getHomePlans(): Promise<Plan[]| "error"> {
   }
 }
 
-export async function getPlanById(id: number): Promise<Plan | "notFound" | "error"> {
+export async function getPlanById(
+  id: number
+): Promise<Plan | "notFound" | "error"> {
   try {
     await client.$connect();
 
-    const plan = await client.plan.findUnique({ where: { id }, include: { features: true } });
+    const plan = await client.plan.findUnique({
+      where: { id },
+      include: { features: true },
+    });
 
     if (!plan) return "notFound";
 
-    return {...plan, 
-      features: plan.features.map(f => f.name), 
-      price: plan.price.toNumber(), 
-      createdAt: plan.createdAt.toDateString(), 
-      updatedAt: plan.updatedAt.toDateString(), 
-      deletedAt: plan.deletedAt?.toDateString() 
+    return {
+      ...plan,
+      features: plan.features.map((f) => f.name),
+      price: plan.price.toNumber(),
+      createdAt: plan.createdAt.toDateString(),
+      updatedAt: plan.updatedAt.toDateString(),
+      deletedAt: plan.deletedAt?.toDateString(),
     };
   } catch (e) {
     console.log(`failed to get plan by ID: ${e}`);
@@ -254,7 +273,9 @@ export async function addPlanForm(formData: FormData) {
     "plan-description"
   ) as unknown as string;
   const price: number | null = formData.get("plan-price") as unknown as number;
-  const duration: string | null = formData.get('plan-duration') as unknown as string;
+  const duration: string | null = formData.get(
+    "plan-duration"
+  ) as unknown as string;
 
   if (!title || !description || !price || !duration) {
     console.log("failed to add a plan: invalid data");
@@ -262,18 +283,26 @@ export async function addPlanForm(formData: FormData) {
   }
 
   try {
-    await client.plan.create({ data: {
-      title,
-      description,
-      price,
-      duration,
-    } });
+    await client.plan.create({
+      data: {
+        title,
+        description,
+        price,
+        duration,
+      },
+    });
   } catch (e) {
     console.log("failed to add a plan: " + e);
   }
 }
 
-export async function addPlan(plan: { title: string, description: string, price: number, duration: string, features: string[] }): Promise<number | "unauthorized" | "error"> {
+export async function addPlan(plan: {
+  title: string;
+  description: string;
+  price: number;
+  duration: string;
+  features: string[];
+}): Promise<number | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -289,17 +318,21 @@ export async function addPlan(plan: { title: string, description: string, price:
   }
 
   try {
-    const createdPlan = await client.plan.create({ data: { 
-      duration: plan.duration, 
-      title: plan.title, 
-      description: plan.description, 
-      price: plan.price 
-    }});
+    const createdPlan = await client.plan.create({
+      data: {
+        duration: plan.duration,
+        title: plan.title,
+        description: plan.description,
+        price: plan.price,
+      },
+    });
 
-    if (!createdPlan) return 'error';
+    if (!createdPlan) return "error";
 
     for (let f in plan.features) {
-      await client.planFeature.create({ data: { name: f, planId: createdPlan.id  } });
+      await client.planFeature.create({
+        data: { name: f, planId: createdPlan.id },
+      });
     }
     return createdPlan.id;
   } catch (e) {
@@ -308,7 +341,9 @@ export async function addPlan(plan: { title: string, description: string, price:
   }
 }
 
-export async function deletePlanById(id: number): Promise<boolean | "unauthorized" | "error"> {
+export async function deletePlanById(
+  id: number
+): Promise<boolean | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -328,25 +363,41 @@ export async function deletePlanById(id: number): Promise<boolean | "unauthorize
   }
 }
 
-export async function replacePlan(id: number, data: { title: string, description: string, price: number, duration: string, features: string[] }): Promise<undefined | "notFound" | "unauthorized" | "error"> {
+export async function replacePlan(
+  id: number,
+  data: {
+    title: string;
+    description: string;
+    price: number;
+    duration: string;
+    features: string[];
+  }
+): Promise<undefined | "notFound" | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
-    const found = await client.plan.findUnique({ where: { id }, include: { features: true } });
+    const found = await client.plan.findUnique({
+      where: { id },
+      include: { features: true },
+    });
 
     if (!found) return "notFound";
 
-    await client.plan.update({ 
-      where: { id }, 
-      data: { 
-        title: data.title, 
-        description: data.description, 
+    await client.plan.update({
+      where: { id },
+      data: {
+        title: data.title,
+        description: data.description,
         price: data.price,
         duration: data.duration,
       },
     });
 
-    await Promise.allSettled(found.features.map(i => client.planFeature.delete({ where: { id: i.id } })))
+    await Promise.allSettled(
+      found.features.map((i) =>
+        client.planFeature.delete({ where: { id: i.id } })
+      )
+    );
 
     for (let feature of data.features) {
       await client.planFeature.create({ data: { name: feature, planId: id } });
@@ -360,7 +411,7 @@ export async function replacePlan(id: number, data: { title: string, description
 }
 
 export async function getAdsInfo(): Promise<
-  { title: string, description: string } | "unauthorized" | "error"
+  { title: string; description: string } | "unauthorized" | "error"
 > {
   try {
     const d = await importJSON();
@@ -404,38 +455,62 @@ export async function updateAdsInfo(data: {
   }
 }
 
-export async function getHomeProducts(): Promise<(Product & { category: { id: number, name: string } })[] | "unauthorized" | "error"> {
+export async function getHomeProducts(): Promise<
+  | (Product & { category: { id: number; name: string } })[]
+  | "unauthorized"
+  | "error"
+> {
   try {
-    const products = await client.product.findMany({ include: { category: true } });
-  
-    return products.map(p => {
-      return {...p, 
+    const products = await client.product.findMany({
+      include: { category: true },
+    });
+
+    return products.map((p) => {
+      return {
+        ...p,
         price: p.price.toNumber(),
         createdAt: p.createdAt.toDateString(),
         updatedAt: p.updatedAt.toDateString(),
-        deletedAt: p.deletedAt?.toDateString() ?? null
-      }
-    })
+        deletedAt: p.deletedAt?.toDateString() ?? null,
+      };
+    });
   } catch (e) {
     console.log("failed to get a product: " + e);
     return "error";
   }
 }
 
-export async function getProductById(id: number): Promise<Product & { category: ProductCategory } | 'notFound' | 'error'> {
+export async function getProductById(
+  id: number
+): Promise<(Product & { category: ProductCategory }) | "notFound" | "error"> {
   try {
-    const product = await client.product.findUnique({ where: { id }, include: { category: true } });
-  
-    if (!product) return 'notFound';
+    const product = await client.product.findUnique({
+      where: { id },
+      include: { category: true },
+    });
 
-    return {...product, price: product.price.toNumber(), createdAt: product.createdAt.toDateString(), updatedAt: product.updatedAt.toDateString(), deletedAt: product.deletedAt?.toDateString() };
+    if (!product) return "notFound";
+
+    return {
+      ...product,
+      price: product.price.toNumber(),
+      createdAt: product.createdAt.toDateString(),
+      updatedAt: product.updatedAt.toDateString(),
+      deletedAt: product.deletedAt?.toDateString(),
+    };
   } catch (e) {
     console.log("failed to get a product: " + e);
     return "error";
   }
 }
 
-export async function addHomeProduct(product: { name: string, description: string, price: number, marka: string, category: string }): Promise<number | 'categoryNotFound' | "unauthorized" | "error"> {
+export async function addHomeProduct(product: {
+  name: string;
+  description: string;
+  price: number;
+  marka: string;
+  category: string;
+}): Promise<number | "categoryNotFound" | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -444,18 +519,22 @@ export async function addHomeProduct(product: { name: string, description: strin
     if (!(await client.user.count({ where: { session: sc.value } })))
       return "unauthorized";
 
-    const category = await client.productCategory.findUnique({ where: { name: product.category } });
+    const category = await client.productCategory.findUnique({
+      where: { name: product.category },
+    });
 
-    if (!category) return 'categoryNotFound';
+    if (!category) return "categoryNotFound";
 
-    const newProduct = await client.product.create({ data: {
-      name: product.name,
-      description: product.description,
-      price: product.price,
-      marka: product.marka,
+    const newProduct = await client.product.create({
+      data: {
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        marka: product.marka,
 
-      categoryId: category.id
-    } });
+        categoryId: category.id,
+      },
+    });
 
     return newProduct.id;
   } catch (e) {
@@ -466,7 +545,9 @@ export async function addHomeProduct(product: { name: string, description: strin
   }
 }
 
-export async function deleteHomeProduct(name: string): Promise<"success" | "unauthorized" | "error"> {
+export async function deleteHomeProduct(
+  name: string
+): Promise<"success" | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -481,7 +562,6 @@ export async function deleteHomeProduct(name: string): Promise<"success" | "unau
       await client.product.delete({ where: { id: products[0].id } });
     }
 
-
     return "success";
   } catch (e) {
     console.log("failed to delete home products: " + e);
@@ -491,7 +571,10 @@ export async function deleteHomeProduct(name: string): Promise<"success" | "unau
   }
 }
 
-export async function updateProduct(id: number, data: { name: string, description: string, price: number }): Promise<undefined | 'unauthorized' | 'error'> {
+export async function updateProduct(
+  id: number,
+  data: { name: string; description: string; price: number }
+): Promise<undefined | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -500,12 +583,15 @@ export async function updateProduct(id: number, data: { name: string, descriptio
     if (!(await client.user.count({ where: { session: sc.value } })))
       return "unauthorized";
 
-    await client.product.update({ where: { id }, data: { 
-      name: data.name, 
-      description: data.description, 
-      price: data.price, 
-      updatedAt: new Date() 
-    } });
+    await client.product.update({
+      where: { id },
+      data: {
+        name: data.name,
+        description: data.description,
+        price: data.price,
+        updatedAt: new Date(),
+      },
+    });
 
     return;
   } catch (e) {
@@ -516,7 +602,9 @@ export async function updateProduct(id: number, data: { name: string, descriptio
   }
 }
 
-export async function deleteHomeProductById(id: number): Promise<"success" | "unauthorized" | "error"> {
+export async function deleteHomeProductById(
+  id: number
+): Promise<"success" | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -536,73 +624,80 @@ export async function deleteHomeProductById(id: number): Promise<"success" | "un
   }
 }
 
-export async function getProductCategories(): Promise<{ id: number, name: string }[] | 'error'> {
+export async function getProductCategories(): Promise<
+  { id: number; name: string }[] | "error"
+> {
   try {
     const categories = await client.productCategory.findMany({});
-  
-    return categories.map(c => {
+
+    return categories.map((c) => {
       return { name: c.name, id: c.id };
     });
-
   } catch (e) {
     console.log("failed to get product categories: " + e);
     return "error";
   }
 }
 
-export async function getCategoryProducts(): Promise<{id: number, cat: string, data: Product[]}[] | 'error'> {
+export async function getCategoryProducts(): Promise<
+  { id: number; cat: string; data: Product[] }[] | "error"
+> {
   try {
     const categories = await client.productCategory.findMany({
-      include: { products: true }
+      include: { products: true },
     });
 
-    return categories.map(c => {
+    return categories.map((c) => {
       return {
         id: c.id,
         cat: c.name,
-        data: c.products.map(p => { 
-          return {...p, 
+        data: c.products.map((p) => {
+          return {
+            ...p,
             price: p.price.toNumber(),
-            createdAt: p.createdAt.toDateString(), 
-            updatedAt: p.updatedAt.toDateString(), 
-            deletedAt: p.deletedAt?.toDateString()
-          } 
-        }) 
-      }
-    })
-
+            createdAt: p.createdAt.toDateString(),
+            updatedAt: p.updatedAt.toDateString(),
+            deletedAt: p.deletedAt?.toDateString(),
+          };
+        }),
+      };
+    });
   } catch (e) {
     console.log("failed to get product categories: " + e);
     return "error";
   }
 }
 
-export async function getProductsOfCategory(category: string): Promise<Product[] | 'error'> {
+export async function getProductsOfCategory(
+  category: string
+): Promise<Product[] | "error"> {
   try {
     const categories = await client.productCategory.findUnique({
       where: { name: category },
 
-      include: { products: true }
+      include: { products: true },
     });
 
     if (!categories) return [];
 
-    return categories.products.map(p => { 
-      return {...p, 
+    return categories.products.map((p) => {
+      return {
+        ...p,
         price: p.price.toNumber(),
-        createdAt: p.createdAt.toDateString(), 
-        updatedAt: p.updatedAt.toDateString(), 
-        deletedAt: p.deletedAt?.toDateString()
-      } 
-    })
-
+        createdAt: p.createdAt.toDateString(),
+        updatedAt: p.updatedAt.toDateString(),
+        deletedAt: p.deletedAt?.toDateString(),
+      };
+    });
   } catch (e) {
     console.log("failed to get products of a category: " + e);
     return "error";
   }
 }
 
-export async function addProductCategory(name: string): Promise<number | 'unauthorized' | 'error'> {
+export async function addProductCategory(
+  name: string
+): Promise<number | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -611,7 +706,7 @@ export async function addProductCategory(name: string): Promise<number | 'unauth
     if (!(await client.user.count({ where: { session: sc.value } })))
       return "unauthorized";
 
-    const category = await client.productCategory.create({ data: { name }});
+    const category = await client.productCategory.create({ data: { name } });
 
     return category.id;
   } catch (e) {
@@ -622,7 +717,9 @@ export async function addProductCategory(name: string): Promise<number | 'unauth
   }
 }
 
-export async function deleteProductCategoryById(id: number): Promise<'success' | 'unauthorized' | 'error'> {
+export async function deleteProductCategoryById(
+  id: number
+): Promise<"success" | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -642,7 +739,9 @@ export async function deleteProductCategoryById(id: number): Promise<'success' |
   }
 }
 
-export async function deleteProductCategoryByName(name: string): Promise<'success' | 'unauthorized' | 'error'> {
+export async function deleteProductCategoryByName(
+  name: string
+): Promise<"success" | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -662,7 +761,10 @@ export async function deleteProductCategoryByName(name: string): Promise<'succes
   }
 }
 
-export async function moveProductsFromCategoryToCategory(fromCategory: string, toCategory: string): Promise<'success' | 'unauthorized' | 'error'> {
+export async function moveProductsFromCategoryToCategory(
+  fromCategory: string,
+  toCategory: string
+): Promise<"success" | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -671,7 +773,10 @@ export async function moveProductsFromCategoryToCategory(fromCategory: string, t
     if (!(await client.user.count({ where: { session: sc.value } })))
       return "unauthorized";
 
-    await client.product.updateMany({ where: { name: fromCategory }, data: { name: toCategory } });
+    await client.product.updateMany({
+      where: { name: fromCategory },
+      data: { name: toCategory },
+    });
 
     return "success";
   } catch (e) {
@@ -682,7 +787,9 @@ export async function moveProductsFromCategoryToCategory(fromCategory: string, t
   }
 }
 
-export async function deleteAllProductsFromCategory(name: string): Promise<'success' | 'categoryNotFound' | 'unauthorized' | 'error'> {
+export async function deleteAllProductsFromCategory(
+  name: string
+): Promise<"success" | "categoryNotFound" | "unauthorized" | "error"> {
   try {
     await client.$connect();
 
@@ -691,12 +798,15 @@ export async function deleteAllProductsFromCategory(name: string): Promise<'succ
     if (!(await client.user.count({ where: { session: sc.value } })))
       return "unauthorized";
 
+    const foundCategory = await client.productCategory.findUnique({
+      where: { name },
+    });
 
-    const foundCategory = await client.productCategory.findUnique({ where: { name } });
+    if (!foundCategory) return "categoryNotFound";
 
-    if (!foundCategory) return 'categoryNotFound';
-
-    await client.product.deleteMany({ where: { categoryId: foundCategory.id } });
+    await client.product.deleteMany({
+      where: { categoryId: foundCategory.id },
+    });
 
     return "success";
   } catch (e) {
@@ -707,7 +817,9 @@ export async function deleteAllProductsFromCategory(name: string): Promise<'succ
   }
 }
 
-export async function productsExistUnderCategory(name: string): Promise<number | 'unauthorized' | 'error' | 'categoryNotFound'> {
+export async function productsExistUnderCategory(
+  name: string
+): Promise<number | "unauthorized" | "error" | "categoryNotFound"> {
   try {
     await client.$connect();
 
@@ -716,12 +828,15 @@ export async function productsExistUnderCategory(name: string): Promise<number |
     if (!(await client.user.count({ where: { session: sc.value } })))
       return "unauthorized";
 
+    const foundCategory = await client.productCategory.findUnique({
+      where: { name },
+    });
 
-    const foundCategory = await client.productCategory.findUnique({ where: { name } });
+    if (!foundCategory) return "categoryNotFound";
 
-    if (!foundCategory) return 'categoryNotFound';
-
-    return await client.product.count({ where: { categoryId: foundCategory.id } });
+    return await client.product.count({
+      where: { categoryId: foundCategory.id },
+    });
   } catch (e) {
     console.log("failed to move products from one category to an other : " + e);
     return "error";
@@ -730,7 +845,9 @@ export async function productsExistUnderCategory(name: string): Promise<number |
   }
 }
 
-export async function getContacts(): Promise<Contacts | "unauthorized" | "error"> {
+export async function getContacts(): Promise<
+  Contacts | "unauthorized" | "error"
+> {
   try {
     const d = await importJSON();
 
