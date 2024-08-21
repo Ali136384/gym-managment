@@ -127,7 +127,7 @@ function Market() {
                 categories.length > 8 ? "justify-between" : "justify-center"
               }`}
             >
-              {categories.map((ele) => {
+              {categories?.map((ele) => {
                 return (
                   <React.Fragment key={ele.id}>
                     <div
@@ -144,7 +144,7 @@ function Market() {
             </div>
           </div>
           <div className="right p-4 ml-[12%] mt-4">
-            {products.map((product) => {
+            {products?.map((product) => {
               return (
                 <React.Fragment key={product.id}>
                   <Slider

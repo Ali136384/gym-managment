@@ -196,7 +196,7 @@ function page() {
     setlngs(newLength);
   }, [filterValue]);
   const handelActive = (id) => {
-    const activeSort = filterObject.map((ele) => ({
+    const activeSort = filterObject?.map((ele) => ({
       ...ele,
       active: ele.id === id,
     }));
@@ -255,7 +255,7 @@ function page() {
                   <MdOutlineKeyboardArrowDown size={23} color="gray" />
                 </span>
               </div>
-              {filterObject.map((ele) => {
+              {filterObject?.map((ele) => {
                 return (
                   <React.Fragment key={ele.id}>
                     <p
@@ -334,7 +334,7 @@ function page() {
                         return 0;
                     }
                   })
-                  .map((e) => {
+                  ?.map((e) => {
                     return (
                       <React.Fragment key={e.id}>
                         <Link href={`customer/${e.id}`}>

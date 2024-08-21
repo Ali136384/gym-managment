@@ -79,7 +79,7 @@ function Header() {
               <p>Loading ...</p>
             ) : (
               <div>
-                {allEvents.map((event) => (
+                {allEvents?.map((event) => (
                   <div
                     key={event.id}
                     className="flex flex-col gap-2 border-b-2 pb-4"

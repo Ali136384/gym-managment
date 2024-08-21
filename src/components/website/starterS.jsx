@@ -26,9 +26,9 @@ function starterS() {
       if (c === "error") {
         console.log("error");
       } else {
-        setAllProductCategories(c.map((ele) => ele.name));
+        setAllProductCategories(c?.map((ele) => ele.name));
         console.log(allProductCategories);
-        setCategories(c.map((cat) => cat.name));
+        setCategories(c?.map((cat) => cat.name));
       }
     });
   }, []);

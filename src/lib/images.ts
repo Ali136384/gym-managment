@@ -41,7 +41,7 @@ export async function getProductImageUrls(id: number): Promise<string[]> {
         const storageRef = ref(storage, `/images/products/${id}`);
 
         const response = await listAll(storageRef);
-        const urls = await Promise.all(response.items.map(getDownloadURL));
+        const urls = await Promise.all(response?.items.map(getDownloadURL));
 
         return urls
     } catch (e) {
@@ -90,7 +90,7 @@ export async function uploadExerciseSectionImage(id: number, image: File) {
 
         const list = await listAll(storageRef);
 
-        await Promise.allSettled(list.items.map(deleteObject));
+        await Promise.allSettled(list?.items.map(deleteObject));
 
         await uploadBytes(ref(storage, `images/excercise_sections/${id}/${image.name}`), image);
 

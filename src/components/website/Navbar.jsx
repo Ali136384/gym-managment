@@ -24,7 +24,7 @@ function Navbar() {
 
   return (
     <div className="flex flex-1 justify-between ">
-      {headerData.map((ele) => {
+      {headerData?.map((ele) => {
         return (
           <React.Fragment key={ele.id}>
             <Link href={ele.to}>

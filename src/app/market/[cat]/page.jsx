@@ -106,7 +106,7 @@ function page({}) {
       </div>
       <div className="cards flex p-10 gap-8 flex-wrap mt-10">
         {products
-          .filter((ele) => ele.price > min && ele.price < max)
+          ?.filter((ele) => ele.price > min && ele.price < max)
           .filter(
             (ele) =>
               ele.description

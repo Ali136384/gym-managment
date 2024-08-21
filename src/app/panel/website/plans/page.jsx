@@ -38,7 +38,7 @@ function page() {
 
       // Get image URLs then setPlans
       Promise.allSettled(
-        response.map((p) =>
+        response?.map((p) =>
           getPlanImageUrl(p.id).then((url) => (p.imageURL = url))
         )
       ).then(() => setPlans(response));
@@ -189,7 +189,7 @@ function page() {
                           Features :{" "}
                         </label>
                         <div>
-                          {ele.features.map((ele) => {
+                          {ele.features?.map((ele) => {
                             return (
                               <>
                                 <div className="flex ">

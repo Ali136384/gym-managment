@@ -100,9 +100,9 @@ function page() {
       if (c === "error") {
         console.log("error");
       } else {
-        setAllProductCategories(c.map((ele) => ele.name));
+        setAllProductCategories(c?.map((ele) => ele.name));
         console.log(allProductCategories);
-        setCategories(c.map((cat) => cat.name));
+        setCategories(c?.map((cat) => cat.name));
       }
     });
   }, []);
@@ -309,7 +309,7 @@ function page() {
               </div>
               <div className="already-added-categories mt-7 w-full h-[200px] border-2 p-5 rounded-[21px] overflow-y-auto ">
                 <div className="flex flex-wrap w-full gap-5 ">
-                  {categoreies.map((ele) => {
+                  {categoreies?.map((ele) => {
                     return (
                       <>
                         <div className="relative">
@@ -345,7 +345,7 @@ function page() {
                 </p>
                 <div className=" flex flex-wrap w-full gap-5 ">
                   {deletedCategories
-                    .filter((ele) => allProductCategories.includes(ele))
+                    ?.filter((ele) => allProductCategories.includes(ele))
                     .map((ele) => {
                       return (
                         <>
@@ -428,12 +428,12 @@ function page() {
             );
           })}
         </div>
-        {products.map((ele) => {
+        {products?.map((ele) => {
           return (
             <>
               {activeSection !== null
                 ? ele.data
-                    .filter((ele) =>
+                    ?.filter((ele) =>
                       ele.name
                         .trim()
                         .toLowerCase()
@@ -441,7 +441,7 @@ function page() {
                     )
                     .filter((e) => e.categoryId === activeSection)
                     .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((el, index) => {
+                    ?.map((el, index) => {
                       return (
                         <React.Fragment key={index}>
                           <div
@@ -660,14 +660,14 @@ function page() {
                       );
                     })
                 : ele.data
-                    .filter((ele) =>
+                    ?.filter((ele) =>
                       ele.name
                         .trim()
                         .toLowerCase()
                         .includes(filterValue.trim().toLowerCase())
                     )
                     .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((el, index) => {
+                    ?.map((el, index) => {
                       return (
                         <React.Fragment key={index}>
                           <div

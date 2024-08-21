@@ -265,7 +265,7 @@ function Exercises() {
                 Create section
               </button>
             </div>
-            {allSections.map((ele) => {
+            {allSections?.map((ele) => {
               return (
                 <>
                   <div className="sction w-1/6 shadow-md px-4 relative py-5 rounded-lg">
@@ -361,7 +361,7 @@ function Exercises() {
                   Select
                 </option>
 
-                {allSectionsWithExcercises.map((a) => (
+                {allSectionsWithExcercises?.map((a) => (
                   <option>{a.name}</option>
                 ))}
               </select>
@@ -399,7 +399,7 @@ function Exercises() {
               </button>
             </div>
             <div className="flex-1 mr-4 ">
-              {allSectionsWithExcercises.map((ele) => {
+              {allSectionsWithExcercises?.map((ele) => {
                 return (
                   <>
                     <div
@@ -429,7 +429,7 @@ function Exercises() {
                           <p className="font-bold text-xl">{ele.name}</p>
                         </div>
                         {ele.excercises.length > 0 ? (
-                          ele.excercises.map((e) => {
+                          ele.excercises?.map((e) => {
                             return (
                               <>
                                 <div

@@ -42,7 +42,7 @@ function page() {
           Exercises
         </p>
         <div className="exerciese-container  gap-10">
-          {exerciseSections.map((ele, index) => {
+          {exerciseSections?.map((ele, index) => {
             return (
               <React.Fragment key={index}>
                 <Link className="w-full" href={`/exercise/${ele.id}`}>

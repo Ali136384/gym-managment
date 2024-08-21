@@ -70,7 +70,7 @@ function page() {
           </div>
           <div className="exer-right w-[63%] rounded-xl">
             <div className="exer-exercises flex flex-col gap-6">
-              {exercises.map((ele) => {
+              {exercises?.map((ele) => {
                 return (
                   <div key={ele.id} onClick={() => handleOpenArray(ele.id)}>
                     <div

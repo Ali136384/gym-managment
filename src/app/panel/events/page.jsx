@@ -35,8 +35,8 @@ function EventsPage() {
         <>
           <div className=" bg-white rounded-md w-[96%] ml-8 mr-4">
             {allEvents
-              .sort((a, b) => new Date(b.date) - new Date(a.date))
-              .map((event) => {
+              ?.sort((a, b) => new Date(b.date) - new Date(a.date))
+              ?.map((event) => {
                 return (
                   <div key={event.id}>
                     <EventItem key={event.id} event={event} />

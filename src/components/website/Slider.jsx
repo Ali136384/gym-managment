@@ -26,7 +26,7 @@ function Slider({ data, id, min, max, sendedFilterValue, cat }) {
           ref(storage, `images/products/${product.id}`)
         );
         const urls = await Promise.all(
-          response.items.map((i) => getDownloadURL(i))
+          response?.items.map((i) => getDownloadURL(i))
         );
         product.images = urls;
       }
@@ -59,7 +59,7 @@ function Slider({ data, id, min, max, sendedFilterValue, cat }) {
               onSlideChange={() => console.log("slide change")}
             >
               {sections.data
-                .filter(
+                ?.filter(
                   (ele) =>
                     ele.price > min &&
                     ele.price < max &&
@@ -70,7 +70,7 @@ function Slider({ data, id, min, max, sendedFilterValue, cat }) {
                         .toUpperCase()
                         .includes(sendedFilterValue.toUpperCase()))
                 )
-                .map((ele) => (
+                ?.map((ele) => (
                   <React.Fragment key={id}>
                     <SwiperSlide className="product shadow-lg flex flex-col  rounded-xl min-w-[250px]">
                       <Link href={`/product/${ele.id}`}>
@@ -147,7 +147,7 @@ function Slider({ data, id, min, max, sendedFilterValue, cat }) {
                 onSlideChange={() => console.log("slide change")}
               >
                 {sections.data
-                  .filter(
+                  ?.filter(
                     (ele) =>
                       ele.price > min &&
                       ele.price < max &&
@@ -158,7 +158,7 @@ function Slider({ data, id, min, max, sendedFilterValue, cat }) {
                           .toUpperCase()
                           .includes(sendedFilterValue.toUpperCase()))
                   )
-                  .map((ele) => (
+                 ?.map((ele) => (
                     <React.Fragment key={id}>
                       <SwiperSlide className="product shadow-lg flex flex-col justify-center items-center rounded-xl min-w-[250px]">
                         <Link href={`/product/${ele.id}`}>

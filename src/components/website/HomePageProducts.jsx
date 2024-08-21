@@ -62,7 +62,7 @@ function Products() {
             // onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}
           >
-            {products.map((ele) => {
+            {products?.map((ele) => {
               return (
                 <React.Fragment key={ele.id}>
                   <SwiperSlide

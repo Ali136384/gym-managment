@@ -37,7 +37,7 @@ function Plans() {
         <p className="mt-10 text-center opacity-60">{paragraph}</p>
         {plans.length ? (
           <div className="plans w-full flex flex-col overflow-hidden gap-14  lg:gap-14 items-start justify-center mt-16 mx-auto my-0 lg:px-[150px] px-[20px]">
-            {plans.map((ele) => {
+            {plans?.map((ele) => {
               return (
                 <React.Fragment key={ele.id}>
                   <Link className="w-full" href={`/plan/${ele.id}`}>

@@ -256,7 +256,7 @@ function SideBar() {
           </div>
           <div className="top-content flex flex-col  mx-4 ">
             <div className=" h-[60vh] mt-[40px] w-full  flex flex-col items-start self-center gap-[15px] ">
-              {windows.map((ele) => {
+              {windows?.map((ele) => {
                 path
                   ? null
                   : window.sessionStorage.setItem("activePath", windows[0].to);
@@ -315,7 +315,7 @@ function SideBar() {
                           websiteSelect ? "h-[220px] p-4" : "h-0 p-0 "
                         } rounded-md`}
                       >
-                        {headerData.map((ele) => {
+                        {headerData?.map((ele) => {
                           return (
                             <>
                               <Link href={ele.to}>

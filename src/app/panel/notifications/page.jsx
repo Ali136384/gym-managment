@@ -32,8 +32,8 @@ function Page() {
       {messages ? (
         <div className="notification ml-[26%] mt-10 shadow-xl rounded-[31px] m-4 min-h-[600px] overflow-hidden">
           {messages
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .map((ele, index) => (
+            ?.sort((a, b) => new Date(b.date) - new Date(a.date))
+            ?.map((ele, index) => (
               <div
                 key={ele.id}
                 className={

@@ -38,7 +38,7 @@ function page() {
         );
         if (productsOfCategory !== "error") {
           const productsWithImages = await Promise.all(
-            productsOfCategory.map(async (p) => {
+            productsOfCategory?.map(async (p) => {
               const imageUrls = await getProductImageUrls(p.id);
               p.images = imageUrls;
               return p;
@@ -110,7 +110,7 @@ function page() {
             // onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}
           >
-            {products.map((ele) => {
+            {products?.map((ele) => {
               return (
                 <>
                   <SwiperSlide

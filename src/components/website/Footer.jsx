@@ -13,7 +13,7 @@ function Footer() {
         <div className="flex  w-full">
           <div className="2 flex-1 ">
             <p className="text-white flex flex-col gap-5">
-              {data.map((ele) => {
+              {data?.map((ele) => {
                 return (
                   <React.Fragment key={ele.id}>
                     <Link

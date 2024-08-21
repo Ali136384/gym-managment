@@ -5,7 +5,7 @@ function HeaderDash() {
   return (
     <>
       <div className="header-dashboard flex items-center px-8 h-[50px] bg-green-600 mb-5 justify-around">
-        {headerData.map((ele) => {
+        {headerData?.map((ele) => {
           return (
             <>
               <Link href={ele.to} className="font-bold text-white text-[20px]">

@@ -68,7 +68,7 @@ function page() {
                   All managers will recive the message
                 </p>
               )}
-              {dummyData.map((e) => {
+              {dummyData?.map((e) => {
                 return (
                   <>
                     <div className="option w-[45%] flex items-center p-2">

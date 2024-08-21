@@ -102,7 +102,7 @@ const MoneyStats = () => {
             <option className="text-black" value="Total">
               Tümü
             </option>
-            {months.map((month, index) => (
+            {months?.map((month, index) => (
               <option
                 className="text-black"
                 key={index}

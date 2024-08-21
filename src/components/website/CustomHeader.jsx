@@ -55,7 +55,7 @@ function CustomNav() {
           menuOpen ? "flex" : "hidden"
         }`}
       >
-        {windowsData.map((ele) => {
+        {windowsData?.map((ele) => {
           return (
             <React.Fragment key={ele.id}>
               <Link
@@ -79,7 +79,7 @@ function CustomNav() {
             </Link>
           </div>
           <div className="flex flex-1 justify-evenly">
-            {windowsData.map((ele) => (
+            {windowsData?.map((ele) => (
               <Link key={ele.id} href={ele.to}>
                 <span
                   className={
