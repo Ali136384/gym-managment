@@ -6,37 +6,26 @@ import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
 import { MdOutlineCancel } from "react-icons/md";
 import storage from "../../../../api/v1/firebase";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  listAll,
-  deleteObject,
-} from "firebase/storage";
-
+import { ref, uploadBytes, listAll, deleteObject } from "firebase/storage";
 import {
   getExerciseSectionImageUrl,
   getExerciseVideoUrl,
   uploadExerciseSectionImage,
 } from "../../../../../lib/images";
-
 import {
   getAllSectionsWithExcercises,
   deleteSectionWithExercises,
   createSection,
   getAllSections,
   createExcercise,
-  deleteSection,
   deleteExcerciseById,
   updateExcerciseById,
   updateSectionById,
 } from "../../../../api/v1/excercises";
 import Swal from "sweetalert2";
-
 function Exercises() {
   const [sectionOpen, setSectionOpen] = useState(false);
   const [exercisesOpen, setExercisesOpen] = useState(false);
-
   const [allSectionsWithExcercises, setAllSectionWithExcercises] = useState([]);
   const [allSections, setAllSections] = useState([]);
   const [newExcercise, setNewExcercise] = useState({
@@ -44,7 +33,6 @@ function Exercises() {
     description: "",
     sectionName: "",
   });
-
   const [editedExercise, setEditedExercise] = useState({
     name: "",
     description: "",
