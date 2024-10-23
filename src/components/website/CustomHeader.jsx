@@ -6,7 +6,7 @@ import { SlBasket } from "react-icons/sl";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import "../website/media.css";
-import { windowsData } from "./data";
+import { sData } from "./data";
 function CustomNav() {
   const [gymName, setGymName] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,7 +55,7 @@ function CustomNav() {
           menuOpen ? "flex" : "hidden"
         }`}
       >
-        {windowsData?.map((ele) => {
+        {sData?.map((ele) => {
           return (
             <React.Fragment key={ele.id}>
               <Link
@@ -79,7 +79,7 @@ function CustomNav() {
             </Link>
           </div>
           <div className="flex flex-1 justify-evenly">
-            {windowsData?.map((ele) => (
+            {sData?.map((ele) => (
               <Link key={ele.id} href={ele.to}>
                 <span
                   className={

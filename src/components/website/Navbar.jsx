@@ -1,21 +1,21 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { SlBasket } from "react-icons/sl";
-import { windowsData as headerData } from "./data";
+import { sData as headerData } from "./data";
 import Link from "next/link";
 
 function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleScroll = () => {
-    setScrollPosition(window.scrollY);
+    setScrollPosition(scrollY);
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      removeEventListener("scroll", handleScroll);
     };
   }, []);
 

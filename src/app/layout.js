@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
   }, []);
 
   useEffect(() => {
-    window.sessionStorage.setItem("activePath", path);
+    sessionStorage.setItem("activePath", path);
   }, [path]);
   return (
     <html lang="en">

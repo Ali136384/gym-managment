@@ -1,6 +1,6 @@
 // 👇 this data is for the header of the website
 
-export const windowsData = [
+export const sData = [
   { id: 1, title: "Home", to: "/" },
   { id: 3, title: "Plans", to: "/plans" },
   { id: 4, title: "Market", to: "/market" },

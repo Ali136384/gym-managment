@@ -39,7 +39,7 @@ function MyComponent({ height, width }) {
   const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
+    const bounds = new google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
     setMap(map);
   }, []);
@@ -52,7 +52,7 @@ function MyComponent({ height, width }) {
     // Open Google Maps with directions
     if (destinationLat && destinationLng && lat && lng) {
       const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationLat},${destinationLng}&origin=${lat},${lng}`;
-      window.open(directionsUrl, "_blank");
+      open(directionsUrl, "_blank");
     }
   };
 
@@ -68,7 +68,7 @@ function MyComponent({ height, width }) {
       >
         {/* Marker component to add a location */}
         <Marker position={markerPosition} onClick={handleMarkerClick} />
-        {/* Child components, such as additional markers, info windows, etc. */}
+        {/* Child components, such as additional markers, info  s, etc. */}
         <></>
       </GoogleMap>
     </div>

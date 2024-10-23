@@ -10,7 +10,7 @@ import Link from "next/link";
 import storage from "../../app/api/v1/firebase";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { CiBurger } from "react-icons/ci";
-import { windowsData as headerData } from "./data";
+import { sData as headerData } from "./data";
 function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -23,7 +23,7 @@ function Header() {
   //   Start scrool Value
 
   const handleScroll = () => {
-    setScrollPosition(window.scrollY);
+    setScrollPosition(scrollY);
   };
 
   const storageRef = ref(storage, "images/");
@@ -40,10 +40,10 @@ function Header() {
       getDownloadURL(item).then(setHeaderImageURL);
     });
 
-    window.addEventListener("scroll", handleScroll);
+    addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      removeEventListener("scroll", handleScroll);
     };
   }, []);
 

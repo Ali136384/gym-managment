@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import MapsComponent from "./GoogleMaps";
-import { windowsData as data } from "./data";
+import { sData as data } from "./data";
 function Footer() {
   return (
     <div className="lg:h-[350px] w-full bg-neutral-900 lg:p-14 p-4 mt-28">

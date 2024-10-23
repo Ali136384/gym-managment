@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-// 👇 those icons are for the sidebar windows
+// 👇 those icons are for the sidebar  s
 import { FaHome, FaClipboardList } from "react-icons/fa";
 
 // 👇 this data is for the sidebar

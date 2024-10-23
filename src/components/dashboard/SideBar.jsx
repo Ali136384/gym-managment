@@ -29,7 +29,7 @@ function SideBar() {
   const path = usePathname();
   const router = useRouter();
 
-  const windows = [
+  const s = [
     {
       id: 1,
       hasDropDown: false,
@@ -39,7 +39,7 @@ function SideBar() {
         <BsHouseDoor
           size="23px"
           color={
-            window.sessionStorage.getItem("activePath") === "/panel"
+            sessionStorage.getItem("activePath") === "/panel"
               ? "white"
               : "black"
           }
@@ -59,7 +59,7 @@ function SideBar() {
           viewBox="0 0 24 24"
           width="20"
           fill={
-            window.sessionStorage.getItem("activePath") === "/panel/website"
+            sessionStorage.getItem("activePath") === "/panel/website"
               ? "white"
               : "black"
           }
@@ -83,8 +83,7 @@ function SideBar() {
           id="Outline"
           viewBox="0 0 24 24"
           fill={
-            window.sessionStorage.getItem("activePath") ===
-            "/panel/add-customer"
+            sessionStorage.getItem("activePath") === "/panel/add-customer"
               ? "white"
               : "black"
           }
@@ -111,7 +110,7 @@ function SideBar() {
           xmlns="http://www.w3.org/2000/svg"
           id="Layer_1"
           fill={
-            window.sessionStorage.getItem("activePath") === "/panel/customers"
+            sessionStorage.getItem("activePath") === "/panel/customers"
               ? "white"
               : "black"
           }
@@ -136,7 +135,7 @@ function SideBar() {
           id="Layer_1"
           data-name="Layer 1"
           fill={
-            window.sessionStorage.getItem("activePath") === "/panel/add-manager"
+            sessionStorage.getItem("activePath") === "/panel/add-manager"
               ? "white"
               : "black"
           }
@@ -160,7 +159,7 @@ function SideBar() {
           id="Layer_1"
           data-name="Layer 1"
           fill={
-            window.sessionStorage.getItem("activePath") === "/panel/managers"
+            sessionStorage.getItem("activePath") === "/panel/managers"
               ? "white"
               : "black"
           }
@@ -184,7 +183,7 @@ function SideBar() {
           id="Layer_1"
           data-name="Layer 1"
           fill={
-            window.sessionStorage.getItem("activePath") === "/panel/events"
+            sessionStorage.getItem("activePath") === "/panel/events"
               ? "white"
               : "black"
           }
@@ -216,7 +215,7 @@ function SideBar() {
 
   useEffect(() => {
     console.log("first");
-  }, [windows]);
+  }, [s]);
 
   return (
     <>
@@ -256,15 +255,13 @@ function SideBar() {
           </div>
           <div className="top-content flex flex-col  mx-4 ">
             <div className=" h-[60vh] mt-[40px] w-full  flex flex-col items-start self-center gap-[15px] ">
-              {windows?.map((ele) => {
-                path
-                  ? null
-                  : window.sessionStorage.setItem("activePath", windows[0].to);
+              {s?.map((ele) => {
+                path ? null : sessionStorage.setItem("activePath", s[0].to);
                 return (
                   <div className="w-full relative" key={ele.to}>
                     <div
                       onClick={() => {
-                        window.sessionStorage.setItem("activePath", ele.to);
+                        sessionStorage.setItem("activePath", ele.to);
                         ele.title === "Web sitesi" &&
                           setWebsiteSelect(!websiteSelect);
                       }}
