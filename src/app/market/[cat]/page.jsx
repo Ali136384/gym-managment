@@ -40,14 +40,14 @@ function page({}) {
   const [max, setMax] = useState(99999999);
 
   const handleScroll = () => {
-    setScrollPosition( .scrollY);
+    setScrollPosition(scrollY);
   };
 
   useEffect(() => {
-     .addEventListener("scroll", handleScroll);
+    addEventListener("scroll", handleScroll);
 
     return () => {
-       .removeEventListener("scroll", handleScroll);
+      removeEventListener("scroll", handleScroll);
     };
   }, []);
 

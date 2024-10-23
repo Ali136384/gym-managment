@@ -39,14 +39,14 @@ function Market() {
   }, []);
 
   const handleScroll = () => {
-    setScrollPosition( .scrollY);
+    setScrollPosition(scrollY);
   };
 
   useEffect(() => {
-     .addEventListener("scroll", handleScroll);
+    addEventListener("scroll", handleScroll);
 
     return () => {
-       .removeEventListener("scroll", handleScroll);
+      removeEventListener("scroll", handleScroll);
     };
   }, []);
 
