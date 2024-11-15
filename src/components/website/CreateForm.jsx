@@ -12,7 +12,7 @@ import storage from "../../app/api/v1/firebase";
 import { listAll, ref, uploadBytes, deleteObject } from "firebase/storage";
 import Swal from "sweetalert2";
 
-function starterS() {
+function CraeteForm(title) {
   const [edited, setEdited] = useState(false);
   const [gymTitle, setGymTitle] = useState("");
   const [generalInfo, setGeneralInfo] = useState({
@@ -100,89 +100,80 @@ function starterS() {
   // end handelUpdatingStarter
 
   return (
-    <>
-      {/* Start starter Blog */}
-
-      <p className="font-bold text-3xl mb-6 ml-10 mt-5 ">Home</p>
-
-      <p className=" font-bold text-center text-xl">Starter Section</p>
-      <div
-        id="starter"
-        className=" border-b-2 pb-12  grid grid-cols-2 gap-7 shadow-lg p-7 rounded-xl "
-      >
-        <div className="1 flex flex-col">
-          <label htmlFor="">Gym title</label>
-          <input
-            defaultValue="default value"
-            type="text"
-            placeholder="Gym title"
-            name="title"
-            value={gymTitle}
-            onChange={(e) => {
-              setGymTitle(e.target.value);
-              setEdited(true);
-            }}
-          />
-        </div>
-        <div className="2 flex flex-col">
-          <label htmlFor="">starter sentence</label>
-          <input
-            type="text"
-            defaultValue="default value"
-            placeholder="starter sentence"
-            name="starter-center"
-            value={generalInfo?.sentence}
-            onChange={(e) => {
-              setGeneralInfo((g) => {
-                return { ...g, sentence: e.target.value };
-              });
-              setEdited(true);
-            }}
-          />
-        </div>
-        <div className="2 flex flex-col">
-          <label htmlFor="">second starter sentence</label>
-          <input
-            type="text"
-            defaultValue="default value"
-            placeholder="starter sentence"
-            name="starter-center"
-            value={generalInfo?.secondSentence}
-            onChange={(e) => {
-              setGeneralInfo((g) => {
-                return { ...g, secondSentence: e.target.data };
-              });
-              setEdited(true);
-            }}
-          />
-        </div>
-        <div className=" flex flex-col">
-          <label htmlFor="image">Background image</label>
-          <input
-            type="file"
-            className="third border-none bg-white"
-            name="image"
-            id="image"
-            onChange={(e) => {
-              setImage(e.target.files[0]);
-              setEdited(true);
-            }}
-          />
-        </div>
-
-        <button
-          className="h-[35px] mt-[24px] bg-green-700 text-white rounded-xl cursor-pointer"
-          disabled={!edited}
-          type="submit"
-          onClick={handelUpdatingStarter}
-        >
-          Update
-        </button>
+    <div
+      id="starter"
+      className=" border-b-2 pb-12 w-[43%] bg-white grid grid-cols-2 gap-7 shadow-lg p-7 rounded-xl "
+    >
+      <div className="1 flex flex-col">
+        <label htmlFor="">Gym title</label>
+        <input
+          defaultValue="default value"
+          type="text"
+          placeholder="Gym title"
+          name="title"
+          value={gymTitle}
+          onChange={(e) => {
+            setGymTitle(e.target.value);
+            setEdited(true);
+          }}
+        />
+      </div>
+      <div className="2 flex flex-col">
+        <label htmlFor="">starter sentence</label>
+        <input
+          type="text"
+          defaultValue="default value"
+          placeholder="starter sentence"
+          name="starter-center"
+          value={generalInfo?.sentence}
+          onChange={(e) => {
+            setGeneralInfo((g) => {
+              return { ...g, sentence: e.target.value };
+            });
+            setEdited(true);
+          }}
+        />
+      </div>
+      <div className="2 flex flex-col">
+        <label htmlFor="">second starter sentence</label>
+        <input
+          type="text"
+          defaultValue="default value"
+          placeholder="starter sentence"
+          name="starter-center"
+          value={generalInfo?.secondSentence}
+          onChange={(e) => {
+            setGeneralInfo((g) => {
+              return { ...g, secondSentence: e.target.data };
+            });
+            setEdited(true);
+          }}
+        />
+      </div>
+      <div className=" flex flex-col">
+        <label htmlFor="image">Background image</label>
+        <input
+          type="file"
+          className="third border-none bg-white"
+          name="image"
+          id="image"
+          onChange={(e) => {
+            setImage(e.target.files[0]);
+            setEdited(true);
+          }}
+        />
       </div>
 
-      {/* End starter Blog */}
-    </>
+      <button
+        className="h-[35px] mt-[24px] bg-green-700 text-white rounded-xl cursor-pointer"
+        disabled={!edited}
+        type="submit"
+        onClick={handelUpdatingStarter}
+      >
+        Update
+      </button>
+    </div>
   );
 }
 
-export default starterS;
+export default CraeteForm;

@@ -6,7 +6,6 @@ import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
 import { MdOutlineCancel } from "react-icons/md";
 
-import "./helper.css";
 import storage from "../../../api/v1/firebase";
 import {
   ref,
@@ -212,8 +211,8 @@ function Exercises() {
     }
   };
   return (
-    <>
-      <div className="p-5 mb-[200px]">
+    <React.Fragment>
+      <div className="p-5 ml-[20%] mb-[200px]">
         <p className="font-bold text-3xl mb-6 ">Exercises</p>
         {/* Start section blog */}
         <div
@@ -307,7 +306,7 @@ function Exercises() {
 
                     {/* Section image */}
 
-                    {<img src={ele.imageURL ? ele.imageURL : ''} />}
+                    {<img src={ele.imageURL ? ele.imageURL : ""} />}
 
                     {inEditingSections.find((s) => s.id === ele.id) && (
                       <>
@@ -645,7 +644,7 @@ function Exercises() {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

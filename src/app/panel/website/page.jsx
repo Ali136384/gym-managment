@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./dashboard.css";
-import StarterS from "../../../components/website/starterSection.jsx";
+import CreateForm from "../../../components/website/CreateForm.jsx";
 import {
   getHomeGeneralInfo,
   getAdsInfo,
@@ -110,52 +110,11 @@ export default function HomePage() {
   };
 
   return (
-    <>
-      <div className="events pl-[20%]  shadow-md  p-3 flex flex-col bg-bg_custom min-h-[100vh]">
-        <StarterS />
-        <div className="p-6 rounded-xl mt-10  pt-10 border-b-2 pb-10 shadow-lg ">
-          <p className="font-bold text-center mb-10 text-xl">Ads section</p>
-          <div id="ads" className="ads  grid grid-cols-2 gap-7 ">
-            <div className=" flex flex-col">
-              <label htmlFor="image">Ads Background image</label>
-              <input
-                type="file"
-                className="third border-none bg-white"
-                name=""
-                id="image"
-                onChange={handleImageChange}
-              />
-            </div>
-            <div className="4 flex flex-col">
-              <label>Ads on image (Bold text)</label>
-              <input
-                defaultValue="default value"
-                type="text"
-                placeholder="Ads on image"
-                value={adsTitle}
-                onChange={handleTitleChange}
-              />
-            </div>
-            <div className="5 flex flex-col">
-              <label>Ads on image (description)</label>
-              <input
-                defaultValue="default value"
-                type="text"
-                placeholder="Ads on image"
-                value={adsDescription}
-                onChange={handleDescriptionChange}
-              />
-            </div>
-            <button
-              className=" h-[40px] mt-5 bg-green-700 text-white font-bold rounded-xl"
-              disabled={!edited2}
-              onClick={handleUpdate}
-            >
-              Update
-            </button>
-          </div>
-        </div>
+    <React.Fragment>
+      <div className="events pl-[19%] shadow-md flex justify-center pt-6 gap-[40px] p-3 bg-bg_custom min-h-[90vh]">
+        <CreateForm />
+        <CreateForm />
       </div>
-    </>
+    </React.Fragment>
   );
 }

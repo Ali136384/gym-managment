@@ -7,7 +7,12 @@ import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 
-import { addPlan, getHomePlans, deletePlanById, replacePlan } from "../../../api/v1/dashboard";
+import {
+  addPlan,
+  getHomePlans,
+  deletePlanById,
+  replacePlan,
+} from "../../../api/v1/dashboard";
 import { uploadPlanImage, getPlanImageUrl } from "../../../../lib/images";
 
 function page() {
@@ -64,12 +69,12 @@ function page() {
   }
 
   /**
-   * 
-   * @param {number} id 
-   * @param {{ title: string, description: string, price: number, duration: string, features: string[] }} data 
+   *
+   * @param {number} id
+   * @param {{ title: string, description: string, price: number, duration: string, features: string[] }} data
    */
   async function updatePlan(id, data) {
-    await replacePlan(id, data)
+    await replacePlan(id, data);
   }
 
   //
@@ -80,7 +85,7 @@ function page() {
   const [userEditedAField, setUserEditedAField] = useState(false);
 
   return (
-    <div className=" m-4 p-4 rounded-xl">
+    <div className=" m-4 ml-[22%] p-4 rounded-xl">
       <p className="font-bold text-3xl mb-6 ">Plans</p>
       <div className="flex gap-4 ">
         <div className="create shadow-lg w-[40%] h-max p-3 rounded-lg">

@@ -84,7 +84,7 @@ function page() {
   }, []);
 
   return (
-    <div className=" m-4 p-4 rounded-xl">
+    <div className=" m-4 ml-[20%] p-4 rounded-xl">
       <p className="font-bold text-3xl mb-6 ">Managers</p>
       <div className="flex gap-4">
         <div className="create shadow-lg w-[40%] h-max p-3 rounded-lg">
