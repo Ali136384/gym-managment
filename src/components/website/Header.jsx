@@ -3,13 +3,11 @@ import React, { useEffect, useState } from "react";
 import { getHomeGeneralInfo } from "../../app/api/v1/dashboard";
 import { getGymName } from "../../app/api/v1/user";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { MdOutlineMenuOpen } from "react-icons/md";
 import { RiCloseCircleLine } from "react-icons/ri";
 import Navbar from "./Navbar";
 import Link from "next/link";
 import storage from "../../app/api/v1/firebase";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
-import { CiBurger } from "react-icons/ci";
 import { sData as headerData } from "./data";
 function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -17,7 +15,6 @@ function Header() {
   const [gymName, setGymName] = useState([]);
   const [genInfo, setGenInfo] = useState(null);
   const [headerImageURL, setHeaderImageURL] = useState(null);
-  const [allImages, setAllImages] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
 
   //   Start scrool Value

@@ -65,9 +65,9 @@ const MoneyStats = () => {
 
   return (
     <div className="right">
-      <div className="income-for-gym bg-white shadow-sm w-[100%] h-[300px] rounded-md">
+      <div className="income-for-gym bg-white shadow-sm max-w-[99%] h-[300px] rounded-md">
         <div className="selects flex justify-between mx-4 pt-3 h-full">
-          <div className="flex flex-col justify-between h-full">
+          <div className="flex flex-col w-full justify-between h-full">
             <p className="text-left font-bold text-[26px] text-black">
               Gelirim
             </p>

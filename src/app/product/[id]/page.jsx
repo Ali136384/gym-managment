@@ -55,7 +55,7 @@ function page() {
   }, [id]);
 
   return (
-    <>
+    <React.Fragment>
       <div className="lg:px-20 p-3 lg:pt-10 flex flex-col lg:flex-row justify-between gap-8 h-[550px]">
         <div className="slide-container lg:w-[25%] border-2 p-10 h-[400px]  rounded-md">
           <Carousel data={images} />
@@ -165,7 +165,7 @@ function page() {
       </div>
 
       {/* End smilar products */}
-    </>
+    </React.Fragment>
   );
 }
 
