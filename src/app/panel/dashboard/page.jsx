@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import StarterS from "../../../components/website/starterSection.jsx";
+import StarterS from "../../../components/website/CreateForm";
 import {
   getHomeGeneralInfo,
   getAdsInfo,
