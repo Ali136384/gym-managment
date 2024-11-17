@@ -1,10 +1,4 @@
 "use client";
-import { useEffect } from "react";
-// 👇 those icons are for the sidebar  s
-import { FaHome, FaClipboardList } from "react-icons/fa";
-import { BsHouseDoor } from "react-icons/bs";
-import { FaHome } from "react-icons/fa";
-import { IoIosLogOut } from "react-icons/io";
 
 // 👇 this data is for the sidebar
 
