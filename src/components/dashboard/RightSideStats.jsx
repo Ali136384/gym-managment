@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
-import {
-  getAllCustomers,
-  getTotalIncome,
-  getTotalSalaries,
-} from "../../app/api/v1/customer";
+import { getTotalSalaries } from "../../app/api/v1/user";
+
+import { getAllCustomers, getTotalIncome } from "../../app/api/v1/customer";
 import { months } from "./data";
 const MoneyStats = () => {
   const [selectedOptionMoney, setSelectedOptionMoney] = useState("TL");
