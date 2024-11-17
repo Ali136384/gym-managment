@@ -7,7 +7,7 @@ import {
   getAdsInfo,
   updateAdsInfo,
 } from "../../api/v1/dashboard.ts";
-import { storage } from "../../api/v1/dashboard.ts";
+import storage from "../../api/v1/firebase.ts";
 import { listAll, ref, uploadBytes, deleteObject } from "firebase/storage";
 import Swal from "sweetalert2";
 
