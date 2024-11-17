@@ -73,7 +73,9 @@ export const tabs = [
         xmlns="http://www.w3.org/2000/svg"
         id="Layer_1"
         fill={
-          sessionStorage.getItem("activePath") === "/panel" ? "white" : "black"
+          window.sessionStorage.getItem("activePath") === "/panel"
+            ? "white"
+            : "black"
         }
         data-name="Layer 1"
         viewBox="0 0 24 24"
@@ -97,7 +99,7 @@ export const tabs = [
         viewBox="0 0 24 24"
         width="20"
         fill={
-          sessionStorage.getItem("activePath") === "/panel/website"
+          window.sessionStorage.getItem("activePath") === "/panel/website"
             ? "white"
             : "black"
         }
@@ -121,7 +123,7 @@ export const tabs = [
         id="Outline"
         viewBox="0 0 24 24"
         fill={
-          sessionStorage.getItem("activePath") === "/panel/add-customer"
+          window.sessionStorage.getItem("activePath") === "/panel/add-customer"
             ? "white"
             : "black"
         }
@@ -148,7 +150,7 @@ export const tabs = [
         xmlns="http://www.w3.org/2000/svg"
         id="Layer_1"
         fill={
-          sessionStorage.getItem("activePath") === "/panel/customers"
+          window.sessionStorage.getItem("activePath") === "/panel/customers"
             ? "white"
             : "black"
         }
@@ -173,7 +175,7 @@ export const tabs = [
         id="Layer_1"
         data-name="Layer 1"
         fill={
-          sessionStorage.getItem("activePath") === "/panel/add-manager"
+          window.sessionStorage.getItem("activePath") === "/panel/add-manager"
             ? "white"
             : "black"
         }
@@ -197,7 +199,7 @@ export const tabs = [
         id="Layer_1"
         data-name="Layer 1"
         fill={
-          sessionStorage.getItem("activePath") === "/panel/managers"
+          window.sessionStorage.getItem("activePath") === "/panel/managers"
             ? "white"
             : "black"
         }
@@ -221,7 +223,7 @@ export const tabs = [
         id="Layer_1"
         data-name="Layer 1"
         fill={
-          sessionStorage.getItem("activePath") === "/panel/events"
+          window.sessionStorage.getItem("activePath") === "/panel/events"
             ? "white"
             : "black"
         }

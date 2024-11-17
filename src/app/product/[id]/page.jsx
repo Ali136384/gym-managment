@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Slide, Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { getProductById, getProductsOfCategory } from "../../api/v1/dashboard";
 import { BallTriangle } from "react-loader-spinner";
