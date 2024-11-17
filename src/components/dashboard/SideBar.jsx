@@ -73,12 +73,14 @@ function SideBar() {
           <div className="top-content flex flex-col  mx-4 ">
             <div className=" h-[60vh] mt-[40px] w-full  flex flex-col items-start self-center gap-[15px] ">
               {tabs?.map((ele) => {
-                path ? null : sessionStorage.setItem("activePath", tabs[0].to);
+                path
+                  ? null
+                  : window?.sessionStorage.setItem("activePath", tabs[0].to);
                 return (
                   <div className="w-full relative" key={ele.to}>
                     <div
                       onClick={() => {
-                        sessionStorage.setItem("activePath", ele.to);
+                        window?.sessionStorage.setItem("activePath", ele.to);
                         ele.title === "Web sitesi" &&
                           setWebsiteSelect(!websiteSelect);
                       }}
