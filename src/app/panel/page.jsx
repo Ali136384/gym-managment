@@ -1,14 +1,24 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
-import Chart from "../../components/dashboard/Chart";
-import Stats_top from "../../components/dashboard/StatsTop";
-import MoneyStats from "../../components/dashboard/RightSideStats";
+import dynamic from "next/dynamic";
+
+// Dynamic imports for components
+const Chart = dynamic(() => import("../../components/dashboard/Chart"), {
+  ssr: false,
+});
+
+const StatsTop = dynamic(() => import("../../components/dashboard/StatsTop"), {
+  ssr: false,
+});
+
+const MoneyStats = dynamic(
+  () => import("../../components/dashboard/RightSideStats"),
+  { ssr: false }
+);
+
 import {
   getUsersLeftChartData,
   getUsersCreatedChartData,
 } from "../../app/api/v1/user";
-
 function page() {
   const [left, setLeft] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [created, setCreated] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
