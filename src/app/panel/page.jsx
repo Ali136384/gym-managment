@@ -8,9 +8,12 @@ const Chart = dynamic(() => import("../../components/dashboard/Chart"), {
   ssr: false,
 });
 
-const StatsTop = dynamic(() => import("../../components/dashboard/StatsTop"), {
-  ssr: false,
-});
+const StatsTop = dynamic(
+  () => import("../../components/dashboard/StatsTop.jsx"),
+  {
+    ssr: false,
+  }
+);
 
 const MoneyStats = dynamic(
   () => import("../../components/dashboard/RightSideStats"),
