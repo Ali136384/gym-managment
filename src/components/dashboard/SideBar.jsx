@@ -135,31 +135,29 @@ function SideBar() {
                           websiteSelect ? "h-[220px] p-4" : "h-0 p-0 "
                         } rounded-md`}
                       >
-                        {headerData?.map((ele) => {
+                        {headerData?.map((ele, ind) => {
                           return (
-                            <>
-                              <Link href={ele.to}>
-                                <div className="flex items-center gap-2">
-                                  <span
-                                    className={`h-[7px] w-[7px] ${
-                                      path === ele.to
-                                        ? "bg-[#5540fb]"
-                                        : "bg-gray-400"
-                                    } rounded-full`}
-                                  ></span>
-                                  <p
-                                    className={`
+                            <Link key={ind} href={ele.to}>
+                              <div className="flex items-center gap-2">
+                                <span
+                                  className={`h-[7px] w-[7px] ${
+                                    path === ele.to
+                                      ? "bg-[#5540fb]"
+                                      : "bg-gray-400"
+                                  } rounded-full`}
+                                ></span>
+                                <p
+                                  className={`
                                     ${
                                       path === ele.to
                                         ? "text-[#5540fb]"
                                         : " text-gray-500"
                                     }`}
-                                  >
-                                    {ele.title}
-                                  </p>
-                                </div>
-                              </Link>
-                            </>
+                                >
+                                  {ele.title}
+                                </p>
+                              </div>
+                            </Link>
                           );
                         })}
                       </div>

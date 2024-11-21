@@ -5,6 +5,8 @@ const nextConfig = {
     locales: ["ar", "en", "fr", "nl-NL"],
     defaultLocale: "en",
   },
+  // Enables static export
+  output: "export",
 };
 
 module.exports = nextConfig;
