@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
-    "build": "prisma generate && NODE_ENV=development next dev",
+    "build": "prisma generate && next dev",
     "start": "next start",
     "lint": "next lint"
   },
