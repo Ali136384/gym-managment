@@ -32,10 +32,6 @@ function page() {
     });
   }, []);
 
-  useEffect(() => {
-    // router.push("/");
-  }, []);
-
   return (
     <>
       {path.includes("panel") && (
