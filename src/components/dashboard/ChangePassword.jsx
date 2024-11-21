@@ -9,7 +9,7 @@ function ChangePassword() {
   return (
     <>
       <div className="card min-h-[300px] bg-white shadow-xl rounded-[31px]flex flex-col gap-10 p-5">
-        <p className=" font-bold  text-center">Change</p>
+        <p className=" font-bold  text-center">Change password</p>
         <input
           onChange={(e) => setOldPassword(e.target.value)}
           className=" border-2 p-2 rounded-xl shadow-xl hover:scale-[1.03] duration-300"
