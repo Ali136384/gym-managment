@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = var(DB_URL)
+  url      = env(DB_URL)
 }
 
 model User {
