@@ -83,13 +83,15 @@ function SideBar() {
                       onClick={() => {
                         typeof window !== "undefined" &&
                           window?.sessionStorage.setItem("activePath", ele.to);
-                        typeof window !== "undefined" &&
-                          window?.sessionStorage.setItem("activePath", ele.to);
                         ele.title === "Web sitesi" &&
                           setWebsiteSelect(!websiteSelect);
+                        typeof window !== "undefined" &&
+                          window?.sessionStorage.setItem("activePath", 2);
                       }}
                       className={`${
-                        path === ele.to ? "bg-[#5540fb]" : "bg-white"
+                        path === ele.to || ele.title == "Web sitesi"
+                          ? "bg-[#5540fb]"
+                          : "bg-white"
                       } ${
                         ele.title === "Web sitesi" && "bg-[#5540fb]"
                       } w-full py-[8px] rounded-md duration-500`}
@@ -100,7 +102,7 @@ function SideBar() {
                           setShowMessage(false);
                           setMobile(false);
                         }}
-                        href={ele.to}
+                        href={ele.title != "Web sitesi" ? ele.to : ""}
                       >
                         <div className="home flex gap-2 text-black px-2">
                           <span

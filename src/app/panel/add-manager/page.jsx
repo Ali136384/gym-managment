@@ -102,7 +102,7 @@ function AddUserPage() {
                 name="startDate"
                 type="date"
                 placeholder="Başlangıç ​​tarihi"
-              />{" "}
+              />
             </div>
 
             <div className="age flex-col flex">
@@ -137,7 +137,7 @@ function AddUserPage() {
                 type="number"
                 placeholder="Kova Fiyatı"
               />
-            </div>{" "}
+            </div>
             <div className="price flex-col flex">
               <label className="font-bold text-md mb-[5px]">Maaş</label>
               <input

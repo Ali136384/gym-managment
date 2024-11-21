@@ -112,8 +112,8 @@ export default function HomePage() {
   return (
     <React.Fragment>
       <div className="events pl-[19%] shadow-md flex justify-center pt-6 gap-[40px] p-3 bg-bg_custom min-h-[90vh]">
-        <CreateForm />
-        <CreateForm />
+        <CreateForm title={"Starter Section"} />
+        <CreateForm title={"Ads Section"} />
       </div>
     </React.Fragment>
   );
