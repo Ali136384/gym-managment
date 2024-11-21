@@ -68,7 +68,7 @@ function page() {
                   All managers will recive the message
                 </p>
               )}
-              {dummyData?.map((e) => {
+              {/* {dummyData?.map((e) => {
                 return (
                   <>
                     <div className="option w-[45%] flex items-center p-2">
@@ -92,7 +92,7 @@ function page() {
                     </div>
                   </>
                 );
-              })}
+              })} */}
             </div>
           </div>
           <button className=" text-green-700 shadow-xl h-max w-max mx-auto my-0 px-10 py-1 bg-[#ffcb00] rounded-[31px] font-bold mt-[30px]">
