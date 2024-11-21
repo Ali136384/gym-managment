@@ -5,6 +5,7 @@ const nextConfig = {
     locales: ["ar", "en", "fr", "nl-NL"],
     defaultLocale: "en",
   },
+  productionBrowserSourceMaps: true,
 };
 
 module.exports = nextConfig;
