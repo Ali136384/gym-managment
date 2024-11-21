@@ -10,7 +10,6 @@ import {
 } from "../../app/api/v1/user";
 
 function page() {
-  const router = useRouter();
   const path = usePathname();
   const [left, setLeft] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [created, setCreated] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
@@ -33,8 +32,8 @@ function page() {
   }, []);
 
   return (
-    <>
-      {path.includes("panel") && (
+    <React.Fragment>
+      {typeof window !== "undefined" && path.includes("panel") && (
         <div className="overflow-hidden bg-[#eee] min-h-[100vh] pb-10">
           <div className="home-content flex w-[77%] flex-col pt-6 ml-[330px] ">
             <Stats_top />
@@ -53,7 +52,7 @@ function page() {
           </div>
         </div>
       )}
-    </>
+    </React.Fragment>
   );
 }
 
