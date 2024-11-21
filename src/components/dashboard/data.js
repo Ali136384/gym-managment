@@ -229,6 +229,7 @@ export const tabs = [
         id="Layer_1"
         data-name="Layer 1"
         fill={
+          typeof window !== "undefined" &&
           window?.sessionStorage.getItem("activePath") === "/panel/events"
             ? "white"
             : "black"
