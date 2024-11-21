@@ -12,7 +12,13 @@ import {
 function page() {
   const [left, setLeft] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [created, setCreated] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [startRendering, setStartRendering] = useState(false);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setStartRendering(true);
+    }
+  }, []);
   useEffect(() => {
     getUsersLeftChartData().then((l) => {
       if (l === "error" || l === "unauthorized") {
@@ -30,7 +36,7 @@ function page() {
     });
   }, []);
 
-  return (
+  return startRendering ? (
     <React.Fragment>
       {/* { path.includes("panel") && ( */}
       <div className="overflow-hidden bg-[#eee] min-h-[100vh] pb-10">
@@ -52,7 +58,7 @@ function page() {
       </div>
       {/* )} */}
     </React.Fragment>
-  );
+  ) : null;
 }
 
 export default page;
