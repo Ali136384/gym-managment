@@ -35,6 +35,22 @@ model User {
   deletedAt DateTime?
 }
 
+model LandingPageData {
+  id Int @id @default(autoincrement())
+
+  title String
+  starterSentence String
+  secondStarterSentence String
+  plansParagraph String
+  adsOnImageBoldText String
+  adsOnImageDescription String
+  emailContact String?
+  twitterContact String?
+  facebookContact String?
+  instigramContact String?
+  whatsappContact String?
+}
+
 model Subscriber {
   id Int @id @default(autoincrement())
 

@@ -8,19 +8,6 @@ import { ProductCategory } from "@prisma/client";
 const gymHomeBackImage = "gymHomeBackImage";
 const adsBackground = "adsBackground";
 
-async function importJSON(): Promise<Dashboard> {
-  const content = await readFile(path.join(process.cwd(), "dashboard.json"));
-
-  return JSON.parse(content.toString("utf-8")) satisfies Dashboard;
-}
-
-async function exportJSON(dashboard: Dashboard) {
-  await writeFile(
-    path.join(process.cwd(), "dashboard.json"),
-    JSON.stringify(dashboard)
-  );
-}
-
 type Plan = {
   id: number;
 
@@ -79,13 +66,13 @@ export async function getHomeGeneralInfo(): Promise<
   try {
     await client.$connect();
 
-    const d = await importJSON();
+    const landingPage = await client.landingPageData.findFirst({});
 
     return {
-      title: d.gymTitle,
-      sentence: d.starterSentence,
-      secondSentence: d.secondStarterSentence,
-      plansDescription: d.plansParagraph,
+      title: landingPage?.title ?? "",
+      sentence: landingPage?.starterSentence ?? "",
+      secondSentence: landingPage?.secondStarterSentence ?? '',
+      plansDescription: landingPage?.plansParagraph ?? '',
     };
   } catch (e) {
     console.log("failed to fetch dashboard general info: " + e);
@@ -96,12 +83,12 @@ export async function getHomeGeneralInfo(): Promise<
 }
 
 export async function getHomeInfo(): Promise<
-  Dashboard | "error" | "unauthorized"
-> {
+  any | "error" | "unauthorized"
+  > {
+  await client.$connect();
   try {
-    await client.$connect();
 
-    return await importJSON();
+    return await client.landingPageData.findFirst({}) ?? "error";
   } catch (e) {
     console.log("failed to fetch dashboard general info: " + e);
     return "error";
@@ -137,24 +124,28 @@ export async function updateHomeGeneralInfo({
     console.log("failed to fetch user auth status: " + e);
     return "error";
   } finally {
-    client.$disconnect();
+    
   }
 
   //
 
   try {
-    const dashboard = await importJSON();
+    const dashboard = await client.landingPageData.findFirst({});
 
-    dashboard.gymTitle = title ?? dashboard.gymTitle;
-    dashboard.starterSentence = starter ?? dashboard.starterSentence;
-    dashboard.secondStarterSentence =
-      secondStarter ?? dashboard.secondStarterSentence;
-    dashboard.plansParagraph = description ?? dashboard.plansParagraph;
+    if (dashboard) {
 
-    await exportJSON(dashboard);
+      await client.landingPageData.update({ where: { id: dashboard.id }, data: {
+        title: title ?? dashboard.title,
+        starterSentence: starter ?? dashboard.starterSentence,
+        secondStarterSentence: secondStarter ?? dashboard.secondStarterSentence,
+        plansParagraph: description ?? dashboard.plansParagraph,
+      }});
+    }
   } catch (e) {
     console.log("failed to update dashboard data: " + e);
     return "error";
+  } finally {
+    client.$disconnect();
   }
 
   console.log("Dashboard home general info successfully updated");
@@ -163,9 +154,7 @@ export async function updateHomeGeneralInfo({
 
 export async function getPlanParagraph(): Promise<string | "error"> {
   try {
-    const p = await importJSON();
-
-    return p.plansParagraph;
+    return (await client.landingPageData.findFirst({}))?.plansParagraph ?? "error";
   } catch (e) {
     console.log(e);
     return "error";
@@ -188,11 +177,12 @@ export async function updatePlanParagraph(
       return "unauthorized";
     }
 
-    const g = await importJSON();
+    const landingPage = await client.landingPageData.findFirst({});
 
-    g.plansParagraph = paragraph;
+    if (landingPage) {
+      await client.landingPageData.update({ where: { id: landingPage.id }, data: { plansParagraph: paragraph } })
+    }
 
-    await exportJSON(g);
     return "success";
   } catch (e) {
     console.log(e);
@@ -414,11 +404,11 @@ export async function getAdsInfo(): Promise<
   { title: string; description: string } | "unauthorized" | "error"
 > {
   try {
-    const d = await importJSON();
+    const d = await client.landingPageData.findFirst({});
 
     return {
-      title: d.adsOnImageBoldText,
-      description: d.adsOnImageDescription,
+      title: d?.adsOnImageBoldText ?? "",
+      description: d?.adsOnImageDescription ?? "",
     };
   } catch (e) {
     console.log("failed to get ads info: " + e);
@@ -439,12 +429,17 @@ export async function updateAdsInfo(data: {
     if (!(await client.user.count({ where: { session: sc.value } })))
       return "unauthorized";
 
-    const d = await importJSON();
+    const d = await client.landingPageData.findFirst({});
 
-    d.adsOnImageBoldText = data.title;
-    d.adsOnImageDescription = data.description;
-
-    await exportJSON(d);
+    if (d) {
+      await client.landingPageData.update({ 
+        where: { id: d.id }, 
+        data: { 
+          adsOnImageBoldText: data.title, 
+          adsOnImageDescription: data.description, 
+        } 
+      });
+    }
 
     return "success";
   } catch (e) {
@@ -849,9 +844,15 @@ export async function getContacts(): Promise<
   Contacts | "unauthorized" | "error"
 > {
   try {
-    const d = await importJSON();
+    const d = await client.landingPageData.findFirst({});
 
-    return d.contacts;
+    return {
+      email: d?.emailContact ?? "",
+      twitter: d?.twitterContact ?? "",
+      instagram: d?.instigramContact ?? "",
+      facebook: d?.facebookContact ?? "",
+      whatsapp: d?.whatsappContact ?? "",
+    };
   } catch (e) {
     console.log("failed to get contacts: " + e);
     return "error";
@@ -870,11 +871,20 @@ export async function updateContacts(
     if (!(await client.user.count({ where: { session: sc.value } })))
       return "unauthorized";
 
-    const d = await importJSON();
+    const landingPage = await client.landingPageData.findFirst({});
 
-    d.contacts = contacts;
-
-    await exportJSON(d);
+    if (landingPage) {
+      await client.landingPageData.update({ 
+        where: { id: landingPage.id }, 
+        data: {
+          emailContact: contacts?.email ?? "",
+          twitterContact: contacts?.twitter ?? "",
+          instigramContact: contacts?.instagram ?? "",
+          facebookContact: contacts?.facebook ?? "",
+          whatsappContact: contacts?.whatsapp ?? "",
+        }, 
+      })
+    }
 
     return "success";
   } catch (e) {

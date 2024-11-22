@@ -1,1 +1,111 @@
-{"gymTitle":"edited name","starterSentence":"free subsicription","secondStarterSentence":"default22Henry","plansParagraph":"bruh","plans":{"plan me this":{"title":"plan me this","description":"evil plan","price":"230"},"a":{"title":"a","description":"a","price":"400"},"Aliiiiii Aliiiiii":{"title":"Ali Healthy","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes","price":"1500"}},"adsOnImageBoldText":"hi from js course","adsOnImageDescription":"hello there !","products":{"watr":{"id":1,"name":"watr","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"69","marka":"Zam zam"},"watr81":{"id":2,"name":"watr","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"69","marka":"Zam zam"},"wat8r":{"id":3,"name":"watr","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"69","marka":"Zam zam"},"watr7":{"id":4,"name":"watr","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"69","marka":"Zam zam"},"watr6":{"id":5,"name":"watr","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"69","marka":"Zam zam"},"watr5":{"id":6,"name":"watr","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"69","marka":"Zam zam"},"watr4":{"id":7,"name":"watr","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"69","marka":"Zam zam"},"watr3":{"id":8,"name":"watr","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"69","marka":"Zam zam"},"watr2":{"id":9,"name":"watr","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"69","marka":"Zam zam"},"watr1":{"id":10,"name":"watr","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"69","marka":"Zam zam"},"this crap":{"id":11,"name":"this crap","description":"tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good","price":"124","marka":"Ali Hasnei"}},"contacts":{"email":"mail","twitter":"CUM","facebook":"nut","instagram":"LOL","whatsapp":"wawa"}}
+{
+    "gymTitle": "edited name",
+    "starterSentence": "free subsicription",
+    "secondStarterSentence": "default22Henry",
+    "plansParagraph": "bruh",
+    "plans": {
+        "plan me this": {
+            "title": "plan me this",
+            "description": "evil plan",
+            "price": "230"
+        },
+        "a": {
+            "title": "a",
+            "description": "a",
+            "price": "400"
+        },
+        "Aliiiiii Aliiiiii": {
+            "title": "Ali Healthy",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes",
+            "price": "1500"
+        }
+    },
+    "adsOnImageBoldText": "hi from js course",
+    "adsOnImageDescription": "hello there !",
+    "products": {
+        "watr": {
+            "id": 1,
+            "name": "watr",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "69",
+            "marka": "Zam zam"
+        },
+        "watr81": {
+            "id": 2,
+            "name": "watr",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "69",
+            "marka": "Zam zam"
+        },
+        "wat8r": {
+            "id": 3,
+            "name": "watr",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "69",
+            "marka": "Zam zam"
+        },
+        "watr7": {
+            "id": 4,
+            "name": "watr",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "69",
+            "marka": "Zam zam"
+        },
+        "watr6": {
+            "id": 5,
+            "name": "watr",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "69",
+            "marka": "Zam zam"
+        },
+        "watr5": {
+            "id": 6,
+            "name": "watr",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "69",
+            "marka": "Zam zam"
+        },
+        "watr4": {
+            "id": 7,
+            "name": "watr",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "69",
+            "marka": "Zam zam"
+        },
+        "watr3": {
+            "id": 8,
+            "name": "watr",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "69",
+            "marka": "Zam zam"
+        },
+        "watr2": {
+            "id": 9,
+            "name": "watr",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "69",
+            "marka": "Zam zam"
+        },
+        "watr1": {
+            "id": 10,
+            "name": "watr",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "69",
+            "marka": "Zam zam"
+        },
+        "this crap": {
+            "id": 11,
+            "name": "this crap",
+            "description": "tastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes goodtastes good",
+            "price": "124",
+            "marka": "Ali Hasnei"
+        }
+    },
+    "contacts": {
+        "email": "mail",
+        "twitter": "CUM",
+        "facebook": "nut",
+        "instagram": "LOL",
+        "whatsapp": "wawa"
+    }
+}
