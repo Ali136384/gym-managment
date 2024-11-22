@@ -1,8 +1,0 @@
--- CreateTable
-CREATE TABLE "SeenEvent" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "eventId" INTEGER NOT NULL,
-    "userId" INTEGER NOT NULL,
-    CONSTRAINT "SeenEvent_eventId_fkey" FOREIGN KEY ("eventId") REFERENCES "Event" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT "SeenEvent_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
-);
