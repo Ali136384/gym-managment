@@ -1,15 +1,21 @@
 import React from "react";
 
-function Input({ label, setValue, placeholder, type = "text", setIsEdited }) {
+function Input({
+  label,
+  setValue,
+  placeholder,
+  type = "text",
+  setIsEdited,
+  width,
+}) {
   return (
-    <div className="flex-col flex">
-      <label className="font-bold text-sm mb-[5px]">{label}</label>
+    <div className="flex-col flex py-2 ">
+      <label className="font-[600] text-sm mb-[5px]">{label}</label>
       <input
-        className="py-2 px-3 border-2 border-red rounded-[9px] outline-[#5540fb]"
-        onChange={(e) => {
-          setValue(e.target.value);
-          setIsEdited(true);
+        style={{
+          width: width ? width : null,
         }}
+        className="py-2 px-3 border-[1px] placeholder:text-gray-600 placeholder:text-sm  rounded-[9px] outline-[#5540fb]"
         type={type}
         placeholder={placeholder}
       />

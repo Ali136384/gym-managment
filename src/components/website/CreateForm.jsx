@@ -13,13 +13,12 @@ import { listAll, ref, uploadBytes, deleteObject } from "firebase/storage";
 import Swal from "sweetalert2";
 import Image from "next/image";
 import Input from "../dashboard/Input";
+import Button from "./Button";
 
 function CraeteForm({ title }) {
   const [image, setImage] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [preview, setPreview] = useState(null);
-  const [edited, setEdited] = useState(false);
-  const [gymTitle, setGymTitle] = useState("");
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -49,91 +48,13 @@ function CraeteForm({ title }) {
     }
   };
 
-  const [generalInfo, setGeneralInfo] = useState({
-    title: "",
-    sentence: "",
-    secondSentence: "",
-    plansDescription: "",
-  });
-
-  const [categoreies, setCategories] = useState([]);
-  const [allProductCategories, setAllProductCategories] = useState([]);
-
   useEffect(() => {
     return () => {
       if (preview) URL.revokeObjectURL(preview);
     };
   }, [preview]);
 
-  useEffect(() => {
-    getHomeGeneralInfo().then((d) => {
-      setGeneralInfo(d === "error" || d === "unauthorized" ? null : d);
-      setGymTitle(d.title);
-    });
-
-    // what is this doing here?
-    getProductCategories().then((c) => {
-      if (c === "error") {
-        console.log("error");
-      } else {
-        setAllProductCategories(c?.map((ele) => ele.name));
-        console.log(allProductCategories);
-        setCategories(c?.map((cat) => cat.name));
-      }
-    });
-  }, []);
-
   //handelUpdatingStarter
-
-  const handelUpdatingStarter = () => {
-    Swal.fire({
-      title: "Do you want to save the changes?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Save",
-      denyButtonText: `Don't save`,
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        await updateHomeGeneralInfo({
-          title: gymTitle,
-          description: generalInfo?.description,
-          starter: generalInfo?.sentence,
-          secondSentence: generalInfo?.secondSentence,
-          description: generalInfo?.description,
-        });
-        if (image !== null) {
-          var extension = image.name.includes(".")
-            ? image.name.substring(
-                image.name.lastIndexOf(".") + 1,
-                image.name.length
-              )
-            : "";
-          const imagesRef = ref(storage, "images/");
-
-          const allImages = await listAll(imagesRef);
-
-          const gymHomeBackImage = allImages.items.find((i) =>
-            i.name.startsWith("gymHomeBackImage")
-          );
-
-          if (gymHomeBackImage) {
-            const imageRef = ref(storage, `images/${gymHomeBackImage.name}`);
-            await deleteObject(imageRef);
-          }
-
-          const imageRef = ref(storage, `images/gymHomeBackImage.${extension}`);
-          try {
-            await uploadBytes(imageRef, image);
-          } catch (e) {
-            console.log("failed to upload image: " + e);
-          }
-        }
-        Swal.fire("Saved!", "", "success");
-      } else if (result.isDenied) {
-        Swal.fire("Changes are not saved", "", "info");
-      }
-    });
-  };
 
   const removeImage = () => {
     setImage(null);
@@ -216,61 +137,11 @@ function CraeteForm({ title }) {
         )}
       </div>
 
-      <div className="flex flex-col">
-        <label htmlFor="">Gym title</label>
-        <input
-          defaultValue="default value"
-          type="text"
-          placeholder="Gym title"
-          name="title"
-          value={gymTitle}
-          onChange={(e) => {
-            setGymTitle(e.target.value);
-            setEdited(true);
-          }}
-        />
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="">starter sentence</label>
-        <input
-          type="text"
-          defaultValue="default value"
-          placeholder="starter sentence"
-          name="starter-center"
-          value={generalInfo?.sentence}
-          onChange={(e) => {
-            setGeneralInfo((g) => {
-              return { ...g, sentence: e.target.value };
-            });
-            setEdited(true);
-          }}
-        />
-      </div>
-      <Input label={"second starter sentence"} />
-      <div className="flex flex-col">
-        <input
-          type="text"
-          defaultValue="default value"
-          placeholder="starter sentence"
-          name="starter-center"
-          value={generalInfo?.secondSentence}
-          onChange={(e) => {
-            setGeneralInfo((g) => {
-              return { ...g, secondSentence: e.target.data };
-            });
-            setEdited(true);
-          }}
-        />
-      </div>
-
-      <button
-        className="h-[40px] mt-[24px] w-full bg-bg_secondery text-white rounded-lg cursor-pointer"
-        disabled={!edited}
-        type="submit"
-        onClick={handelUpdatingStarter}
-      >
-        Update
-      </button>
+      <Input placeholder="waititing sallum" label={"second starter sentence"} />
+      <Input placeholder="waititing sallum" label={"second starter sentence"} />
+      <Input placeholder="waititing sallum" label={"second starter sentence"} />
+      <Input placeholder="waititing sallum" label={"second starter sentence"} />
+      <Button />
     </div>
   );
 }
