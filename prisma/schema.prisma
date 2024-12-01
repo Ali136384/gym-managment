@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DB_URL")
 }
 
@@ -33,6 +33,22 @@ model User {
   logs Event[]
 
   deletedAt DateTime?
+}
+
+model LandingPageData {
+  id Int @id @default(autoincrement())
+
+  title String
+  starterSentence String
+  secondStarterSentence String
+  plansParagraph String
+  adsOnImageBoldText String
+  adsOnImageDescription String
+  emailContact String?
+  twitterContact String?
+  facebookContact String?
+  instigramContact String?
+  whatsappContact String?
 }
 
 model Subscriber {
