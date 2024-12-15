@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image.js";
 import Input from "./dashboard/Input";
 
-export default function HomePage({ children }) {
+export default function HomePage({ title, buttonTitle, children }) {
   const [images, setImages] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -65,19 +65,19 @@ export default function HomePage({ children }) {
       <div className="events shadow-md pt-6 gap-[40px] p-3 bg-bg_custom min-h-[90vh]">
         <div className="emptyPage ml-[21.5%] bg-white min-h-[100vh] w-[78%] rounded-lg p-7">
           <div className="header flex justify-between items-center">
-            <div className="title font-bold text-lg">Create Product</div>
+            <div className="title font-bold text-2xl">{title} </div>
             <div className="buttons flex gap-4">
               <div className="cancel-button cursor-pointer border-border_secondery border-2 w-[85px] h-[40px] text-txt_secondery font-[600] text-sm flex items-center justify-center rounded-md">
                 Cancel
               </div>
               <div className="create-button cursor-pointer min-w-max border-border_secondery bg-bg_secondery text-white font-[600] text-sm border-2 w-[140px] h-[40px] flex items-center justify-center rounded-md">
-                Create Product
+                {buttonTitle}
               </div>
             </div>
           </div>
           <div className="content mt-5">
-            <div className="upload-image">
-              <div className="flex w-full   gap-4">
+            <div className="upload-image cursor-pointer">
+              <div className="flex w-full gap-4">
                 <label
                   className={`h-36 w-[20%] relative flex items-center justify-center mb-4 border-dotted border-2 rounded-lg ${
                     isDragging
@@ -89,7 +89,7 @@ export default function HomePage({ children }) {
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
                 >
-                  <div className="content flex items-center flex-col gap-2">
+                  <div className="content cursor-pointer flex items-center flex-col gap-2">
                     <div className="img">
                       <Image
                         width={35}
@@ -98,7 +98,7 @@ export default function HomePage({ children }) {
                         alt="icon for upload image"
                       />
                     </div>
-                    <div className="sentences flex flex-col gap-1 items-center justify-center">
+                    <div className="sentences cursor-pointer flex flex-col gap-1 items-center justify-center">
                       <div className="first-sentence">
                         <p className="font-bold text-sm">Background Images</p>
                       </div>

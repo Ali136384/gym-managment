@@ -310,7 +310,7 @@ import EmptyPage from "../../../../components/EmptyPage";
 import Input from "../../../../components/dashboard/Input";
 function page() {
   return (
-    <EmptyPage>
+    <EmptyPage buttonTitle={"Create Plan"} title={"Create Plan"}>
       <Input label="Name" placeholder="name" />
       <Input label="Price" placeholder="price" />
       <Input label="Description" placeholder="description" />

@@ -89,11 +89,9 @@ function SideBar() {
                           window?.sessionStorage.setItem("activePath", 2);
                       }}
                       className={`${
-                        path === ele.to || ele.title == "Web sitesi"
-                          ? "bg-[#5540fb]"
-                          : "bg-white"
+                        path === ele.to ? "bg-[#5540fb]" : "bg-white"
                       } ${
-                        ele.title === "Web sitesi" && "bg-[#5540fb]"
+                        path.includes("website") && "bg-[#5540fb]"
                       } w-full py-[8px] rounded-md duration-500`}
                     >
                       <Link

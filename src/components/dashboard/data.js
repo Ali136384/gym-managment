@@ -37,6 +37,12 @@ export const headerData = [
   },
   {
     id: 5,
+    title: "Sections ",
+    to: "/panel/website/sections",
+    active: false,
+  },
+  {
+    id: 6,
     title: "Managers",
     to: "/panel/website/managers",
     active: false,
@@ -101,7 +107,7 @@ export const tabs = [
         width="20"
         fill={
           typeof window !== "undefined" &&
-          window?.sessionStorage.getItem("activePath") === "/panel/website"
+          window?.sessionStorage.getItem("activePath")?.includes("website")
             ? "white"
             : "black"
         }

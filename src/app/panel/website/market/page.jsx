@@ -499,7 +499,7 @@ export default function HomePage() {
       <div className="events shadow-md pt-6 gap-[40px] p-3 bg-bg_custom min-h-[90vh]">
         <div className="emptyPage ml-[21.5%] bg-white min-h-[100vh] w-[78%] rounded-lg p-7">
           <div className="header flex justify-between items-center">
-            <div className="title font-bold text-lg">Create Product</div>
+            <div className="title font-bold text-2xl">Create Product</div>
             <div className="buttons flex gap-4">
               <div className="cancel-button cursor-pointer border-border_secondery border-2 w-[85px] h-[40px] text-txt_secondery font-[600] text-sm flex items-center justify-center rounded-md">
                 Cancel
