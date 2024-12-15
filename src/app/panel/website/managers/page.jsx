@@ -408,7 +408,7 @@ import EmptyPage from "../../../../components/EmptyPage";
 import Input from "../../../../components/dashboard/Input";
 function page() {
   return (
-    <EmptyPage buttonTitle={"Create Manager"} title={"Create Section"}>
+    <EmptyPage buttonTitle={"Create Manager"} title={"Create Manager"}>
       <Input label="Name" placeholder="name" />
       <Input label="Job title" placeholder="Job title" />
       <Input label="Description" placeholder="Description" />
