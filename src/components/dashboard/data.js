@@ -72,7 +72,7 @@ export const tabs = [
   {
     id: 1,
     hasDropDown: false,
-    to: "/panel",
+    to: "/panel/Home",
     title: "Home",
     icon: (
       <svg

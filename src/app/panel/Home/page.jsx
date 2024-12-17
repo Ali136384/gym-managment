@@ -4,26 +4,26 @@ import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 // Dynamic imports for components
-const Chart = dynamic(() => import("../../components/dashboard/Chart"), {
+const Chart = dynamic(() => import("../../../components/dashboard/Chart"), {
   ssr: false,
 });
 
 const StatsTop = dynamic(
-  () => import("../../components/dashboard/StatsTop.jsx"),
+  () => import("../../../components/dashboard/StatsTop.jsx"),
   {
     ssr: false,
   }
 );
 
 const MoneyStats = dynamic(
-  () => import("../../components/dashboard/RightSideStats"),
+  () => import("../../../components/dashboard/RightSideStats"),
   { ssr: false }
 );
 
 import {
   getUsersLeftChartData,
   getUsersCreatedChartData,
-} from "../../app/api/v1/user";
+} from "../../../app/api/v1/user";
 function page() {
   const [left, setLeft] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [created, setCreated] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);

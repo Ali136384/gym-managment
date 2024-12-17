@@ -34,6 +34,10 @@ function SideBar() {
     });
   }, []);
 
+  useEffect(() => {
+    console.log(path);
+  }, [path]);
+
   return (
     <React.Fragment>
       <div
@@ -71,7 +75,7 @@ function SideBar() {
             </Link>
           </div>
           <div className="top-content flex flex-col  mx-4 ">
-            <div className=" h-[60vh] mt-[40px] w-full  flex flex-col items-start self-center gap-[15px] ">
+            <div className="max-h-[70%] mt-[40px] w-full  flex flex-col items-start self-center gap-[15px] ">
               {tabs?.map((ele) => {
                 path
                   ? null
@@ -89,10 +93,8 @@ function SideBar() {
                           window?.sessionStorage.setItem("activePath", 2);
                       }}
                       className={`${
-                        path === ele.to ? "bg-[#5540fb]" : "bg-white"
-                      } ${
-                        path.includes("website") && "bg-[#5540fb]"
-                      } w-full py-[8px] rounded-md duration-500`}
+                        path.includes(ele.to) ? "bg-[#5540fb]" : "bg-white"
+                      }  w-full py-[8px] rounded-md duration-500`}
                     >
                       <Link
                         className="h-full"
