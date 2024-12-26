@@ -29,11 +29,9 @@ function Navbar() {
           <React.Fragment key={ele.id}>
             <Link href={ele.to}>
               <span
-                className={
-                  scrollPosition > 735
-                    ? "text-lg font-bold text-black  cursor-pointer hover:text-website2 duration-500 scale-[1.04]"
-                    : "text-lg font-bold text-white  cursor-pointer hover:text-website2 duration-500 scale-[1.04]"
-                }
+                className={`text-lg font-bold duration-300 pb-1 hover:text-txt_secondery cursor-pointer hover:text-website2  scale-[1.04]
+                  ${scrollPosition > 735 ? "text-black" : "text-white"}
+                  `}
               >
                 {ele.title}
               </span>
