@@ -59,10 +59,6 @@ function Header() {
     });
   }, []);
 
-  useEffect(() => {
-    // console.log(scrollPosition);
-  }, [scrollPosition]);
-
   const headerStyle =
     scrollPosition < 735 ? { backgroundColor: "rgba(250,250,250,0.1)" } : {};
 
@@ -133,7 +129,7 @@ function Header() {
               className={
                 scrollPosition > 735
                   ? "text-5xl text-black font-extrabold w-[500px] "
-                  : "text-5xl text-white font-extrabold w-[500px] "
+                  : "text-5xl text-white font-extrabold  w-[500px] "
               }
             >
               <span>

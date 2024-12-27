@@ -83,7 +83,7 @@ function CustomNav() {
               <Link key={ele.id} href={ele.to}>
                 <span
                   className={
-                    "text-lg font-bold text-black cursor-pointer hover:text-website2 duration-500 scale-[1.04]"
+                    "text-lg font-bold text-black cursor-pointer hover:text-website2 hover:text-txt_secondery duration-500 scale-[1.04]"
                   }
                 >
                   {ele.title}

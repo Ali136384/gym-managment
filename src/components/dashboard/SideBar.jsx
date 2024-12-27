@@ -34,10 +34,6 @@ function SideBar() {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(path);
-  }, [path]);
-
   return (
     <React.Fragment>
       <div
@@ -80,17 +76,15 @@ function SideBar() {
                 path
                   ? null
                   : typeof window !== "undefined" &&
-                    window?.sessionStorage.setItem("activePath", tabs[0].to);
+                    window?.sessionStorage.setItem("activePath", tabs[0].id);
                 return (
                   <div className="w-full relative" key={ele.to}>
                     <div
                       onClick={() => {
                         typeof window !== "undefined" &&
-                          window?.sessionStorage.setItem("activePath", ele.to);
+                          window?.sessionStorage.setItem("activePath", ele.id);
                         ele.title === "Web sitesi" &&
                           setWebsiteSelect(!websiteSelect);
-                        typeof window !== "undefined" &&
-                          window?.sessionStorage.setItem("activePath", 2);
                       }}
                       className={`${
                         path.includes(ele.to) ? "bg-[#5540fb]" : "bg-white"

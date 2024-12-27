@@ -9,7 +9,6 @@ import Footer from "../components/website/Footer";
 import CustomHeader from "../components/website/CustomHeader";
 import { isUserSignedIn } from "./api/v1/user";
 import Header from "../components/dashboard/Header";
-import { ReduxProvider } from "../redux/provider";
 import { RecoilRoot } from "recoil";
 
 // import Cookies from "js-cookie";
@@ -19,18 +18,19 @@ export default function RootLayout({ children }) {
   const router = useRouter();
   const path = usePathname();
 
-  useEffect(() => {
-    isUserSignedIn().then((u) => {
-      if (!u && (path.startsWith("/panel/") || path.startsWith("/panel"))) {
-        router.push("/panel/sign-in");
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   isUserSignedIn().then((u) => {
+  //     if (!u && (path.startsWith("/panel/") || path.startsWith("/panel"))) {
+  //       router.push("/panel/sign-in");
+  //     }
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    typeof window !== "undefined" &&
-      window?.sessionStorage.setItem("activePath", path);
-  }, [path]);
+  // useEffect(() => {
+  //   typeof window !== "undefined" &&
+  //     window?.sessionStorage.setItem("activePath", path);
+  // }, [path]);
+
   return (
     <html lang="en">
       <meta

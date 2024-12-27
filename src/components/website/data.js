@@ -2,6 +2,7 @@
 
 export const sData = [
   { id: 1, title: "Home", to: "/" },
+  { id: 3, title: "Blogs", to: "/blogs" },
   { id: 3, title: "Plans", to: "/plans" },
   { id: 4, title: "Market", to: "/market" },
   { id: 5, title: "Exercises", to: "/exercises" },

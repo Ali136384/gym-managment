@@ -23,7 +23,7 @@ function Navbar() {
     scrollPosition < 735 ? { backgroundColor: "rgba(250,250,250,0.1)" } : {};
 
   return (
-    <div className="flex flex-1 justify-between ">
+    <div className="flex flex-1  justify-between ">
       {headerData?.map((ele) => {
         return (
           <React.Fragment key={ele.id}>

@@ -80,7 +80,7 @@ export const tabs = [
         id="Layer_1"
         fill={
           typeof window !== "undefined" &&
-          window?.sessionStorage.getItem("activePath") === "/panel"
+          window?.sessionStorage.getItem("activePath") == 1
             ? "white"
             : "black"
         }
@@ -107,7 +107,7 @@ export const tabs = [
         width="20"
         fill={
           typeof window !== "undefined" &&
-          window?.sessionStorage.getItem("activePath")?.includes("website")
+          window?.sessionStorage.getItem("activePath") == 2
             ? "white"
             : "black"
         }
@@ -132,7 +132,7 @@ export const tabs = [
         viewBox="0 0 24 24"
         fill={
           typeof window !== "undefined" &&
-          window?.sessionStorage.getItem("activePath") === "/panel/add-customer"
+          window?.sessionStorage.getItem("activePath") == 3
             ? "white"
             : "black"
         }
@@ -160,7 +160,7 @@ export const tabs = [
         id="Layer_1"
         fill={
           typeof window !== "undefined" &&
-          window?.sessionStorage.getItem("activePath") === "/panel/customers"
+          window?.sessionStorage.getItem("activePath") == 4
             ? "white"
             : "black"
         }
@@ -186,7 +186,7 @@ export const tabs = [
         data-name="Layer 1"
         fill={
           typeof window !== "undefined" &&
-          window?.sessionStorage.getItem("activePath") === "/panel/add-manager"
+          window?.sessionStorage.getItem("activePath") == 5
             ? "white"
             : "black"
         }
@@ -211,7 +211,7 @@ export const tabs = [
         data-name="Layer 1"
         fill={
           typeof window !== "undefined" &&
-          window?.sessionStorage.getItem("activePath") === "/panel/managers"
+          window?.sessionStorage.getItem("activePath") == 6
             ? "white"
             : "black"
         }
@@ -236,7 +236,7 @@ export const tabs = [
         data-name="Layer 1"
         fill={
           typeof window !== "undefined" &&
-          window?.sessionStorage.getItem("activePath") === "/panel/events"
+          window?.sessionStorage.getItem("activePath") == 7
             ? "white"
             : "black"
         }
